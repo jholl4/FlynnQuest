@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>70</y>
+      <w>210</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>Class: Player_
+--
+id: Long="36548"
+-----------------------------------------------
+Properties
+
+name
+class
+maxHp
+hp
+str
+mag
+dex
+
+-----------------------------------------------
+Methods
+
+attack
+------------------------------------------------
+Randomized opposing dice rolls between
+player and monster for combat?
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>70</y>
+      <w>250</w>
+      <h>500</h>
+    </coordinates>
+    <panel_attributes>Class: Scene_
+--
+id: Long="36548"
+----------------------------------------------
+Properties
+
+description
+treasure
+monster
+riddle
+door(scene pointer?)
+
+----------------------------------------------
+Methods
+
+
+----------------------------------------------
+Requirements
+
+Minimum 5 scenes
+Must account for Player properties
+Game must use minimum 3 scenes randomly selected from pool
+No repeated scenes
+Must have 2 distinct end scenes</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>520</x>
+      <y>70</y>
+      <w>210</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>_object: ScoreKeeper_
+--
+id: Long="36548"
+----------------------------------------------------------
+Properties
+
+saveLocation
+-----------------------------------------------------------
+Methods
+
+saveScore
+retrieveScores</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>520</x>
+      <y>370</y>
+      <w>210</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>Class: Monster_
+--
+id: Long="36548"
+-----------------------------------------------------------
+Properties
+
+hp
+str
+wis
+mag
+lvl
+xpValue
+-----------------------------------------------------------
+Methods
+
+------------------------------------------------------
+skeleton
+orc
+wraith</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>370</y>
+      <w>210</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>_Class: Dragon_
+--
+id: Long="36548"
+----------------------------------------------------
+Properties
+
+str
+lvl
+-----------------------------------------------------
+Methods</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
