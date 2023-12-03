@@ -1,5 +1,5 @@
 package flynnquest.scenes;
 
-public class MainMenu {
+public class MainMenu extends Scene{
 
 }
