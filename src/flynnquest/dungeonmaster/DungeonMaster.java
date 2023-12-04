@@ -60,7 +60,8 @@ public class DungeonMaster {
 	}
 	
 	/**
-	 * Method to clear the console
+	 * Method to clear the console.
+	 * Prints several empty lines.
 	 */
 	public static void clearConsole() {
 		for(int i=0; i<100;i++) {
@@ -69,7 +70,8 @@ public class DungeonMaster {
 	}
 	
 	/**
-	 * Prints a separator line
+	 * Prints a separator line.
+	 * Used for the printHeading method.
 	 */
 	public static void printSeparator() {
 		for(int i=0; i<30; i++)
@@ -77,12 +79,20 @@ public class DungeonMaster {
 		System.out.println();
 	}
 	
+	/**
+	 * Prints a heading(param title) with separators above and below.
+	 * @param title
+	 */
 	public static void printHeading(String title) {
 		printSeparator();
 		System.out.println(title);
 		printSeparator();
 	}
 	
+	/**
+	 * Waits for the user to input any value and press enter.
+	 * Gives them a chance to read what is on the screen if needed.
+	 */
 	public static void pressAnyKey() {
 		System.out.print("\nEnter anything to continue>>>");
 		scanner.next();
