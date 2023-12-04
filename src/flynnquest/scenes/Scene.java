@@ -4,21 +4,22 @@ import java.util.Scanner;
 
 import flynnquest.characters.Monster;
 
-public class Scene {
+public abstract class Scene {
 	
 	private String description;
 	private Monster monster;
 	private int scenePointer;
 	private int treasure;
-	private Scanner scan;
+	private String menu;
+	private int userChoices;
 	
 	// Constructors
 	public Scene() {
 		this.description = "";
+		this.menu = "";
 //		this.monster = monster;
-		this.scenePointer = scenePointer;
-		this.treasure = treasure;
-		this.scan = scan;
+//		this.scenePointer = scenePointer;
+//		this.treasure = treasure;
 	}
 	
 	
@@ -28,18 +29,8 @@ public class Scene {
 	}
 
 
-	public void setMonster(Monster monster) {
-		this.monster = monster;
-	}
-
-
 	public int getScenePointer() {
 		return scenePointer;
-	}
-
-
-	public void setScenePointer(int scenePointer) {
-		this.scenePointer = scenePointer;
 	}
 
 
@@ -53,14 +44,15 @@ public class Scene {
 	}
 
 
-	public Scanner getScan() {
-		return scan;
+	public String getMenu() {
+		return menu;
+	}
+
+
+	public int getUserChoices() {
+		return userChoices;
 	}
 	
-	// helper methods
-	private void run() {
-		
-	}
 
 	
 

@@ -80,7 +80,9 @@ public abstract class Player extends Character {
 	
 	public String toString() {
 		DungeonMaster.printHeading("CHARACTER STATUS");
-		return String.format("You are the %s, %s. You have %d strength, %d magic, and %d dexterity. You are currently carrying %d gold.%n", this.getVocation(), this.getName(), this.getStr(), this.getMag(), this.getDex(), this.getGold() );
+		return String.format("You are the %s, %s. You have %d strength, %d magic, and %d dexterity."
+				+ " You are currently carrying %d gold.%n", this.getVocation(), this.getName(), this.getStr(),
+				this.getMag(), this.getDex(), this.getGold() );
 	}
 	
 

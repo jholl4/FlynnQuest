@@ -2,6 +2,8 @@ package flynnquest.dungeonmaster;
 
 import java.util.Scanner;
 
+import flynnquest.scenes.Scene;
+
 public class DungeonMaster {
 	
 	static Scanner scanner = new Scanner(System.in);
@@ -96,6 +98,22 @@ public class DungeonMaster {
 	public static void pressAnyKey() {
 		System.out.print("\nEnter anything to continue>>>");
 		scanner.next();
+	}
+	
+	public static void runScene(Scene scene) {
+		
+		// read scene description
+		if(scene.getDescription() != null) {
+			System.out.println(scene.getDescription());
+			pressAnyKey();
+		}
+		// Display scene menu and ask user for input
+		System.out.println(scene.getMenu());
+		int input = readInt(scene.getMenu(), scene.getUserChoices());
+		
+		// action happens from input. put a switch method in the scene to determine this?
+		// param of user input here goes into switch method, then
+		// is passed to switch and returns result for action?
 	}
 
 }
