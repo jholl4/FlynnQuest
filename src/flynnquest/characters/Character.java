@@ -1,22 +1,52 @@
 package flynnquest.characters;
 
-public class Character {
+public abstract class Character {
 	
 	// properties
 		private String name;
 		private int maxHp;
 		private int hp;
-		private boolean isAlive;
+		private boolean isAlive;		
 		
-		
-		// constructors
-		
-		// getters/setters
-		
-		// helper methods
-		
-		public void attack() {
-			
-		}
+	// constructors
+	public Character(String name, int maxHp) {
+		this.name = name;
+		this.maxHp = maxHp;
+		this.hp = maxHp;
+		this.isAlive = true;
+	}
+	
+	// getters/setters
+	
+
+	
+	public int getHp() {
+		return hp;
+	}
+
+	public void setHp(int hp) {
+		this.hp = hp;
+	}
+
+	public boolean isAlive() {
+		return isAlive;
+	}
+
+	public void setAlive(boolean isAlive) {
+		this.isAlive = isAlive;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public int getMaxHp() {
+		return maxHp;
+	}
+
+	// abstract methods for every character
+	public abstract int attack();
+	public abstract int defend();
+	
 
 }
