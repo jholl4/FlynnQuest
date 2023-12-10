@@ -86,18 +86,6 @@ public final class DungeonMaster {
 		scanner.next();
 	}
 
-//	public static void pickNextScene(int scenePointer) {
-//
-//		switch (scenePointer) {
-//		case 0:
-//			
-//			break;
-//
-//		default:
-//			break;
-//		}
-//
-//	}
 	/**
 	 * Shows a splash intro screen and then prompts the player to create their character
 	 */
@@ -245,7 +233,31 @@ public final class DungeonMaster {
 	public static void combat(Player player, Monster monster) {
 		printHeading(monster.getName());
 		while(player.isAlive() && monster.isAlive()) {
+			// player attacks, monster defends then check isAlive for both
+			int pAtk = player.attack();
+			int mDef = monster.defend();
+			// if player's attack meets or exceeds monster defense, reduce monster's health
+			if(pAtk >= mDef) {
+				monster.damage(pAtk - mDef);
+			}
+			if(!monster.isAlive()) {
+				System.out.printf("The %s has been defeated!%n", monster.getName());
+				System.out.printf("You recieve %d gold! Way to go!%n", monster.getGoldReward());
+				player.rewardGold(monster.getGoldReward());
+				return;
+			}
 			
+			// monster attacks, player defends then check isAlive for both
+			int mAtk = monster.attack();
+			int pDef = player.defend();
+			// if monster's attack meets or exceeds player's defense, reduce player's health
+			if(mAtk >= pDef) {
+				player.damage(mAtk - pDef);
+			}
+			if(!player.isAlive()) {
+				System.out.printf("Oh no! %s has been defeated in combat with the %s!%n", player.getName(), monster.getName());
+				return;
+			}
 		}
 		
 	}

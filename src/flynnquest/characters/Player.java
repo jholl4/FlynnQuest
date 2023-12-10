@@ -6,9 +6,6 @@ public class Player extends Character {
 
 	// properties
 	private String vocation;
-//	private int str;
-//	private int mag;
-//	private int dex;
 	private boolean hasEscaped; // should start as false
 	private int gold;
 
@@ -23,19 +20,19 @@ public class Player extends Character {
 		this.vocation = vocation;
 		this.hasEscaped = false;
 		if (vocation.equalsIgnoreCase("warrior")) {
-			this.str = 8;
-			this.mag = 3;
-			this.dex = 5;
+			setStr(8);
+			setDex(5);
+			setMag(3);
 		}
 		if (vocation.equalsIgnoreCase("thief")) {
-			this.str = 5;
-			this.mag = 3;
-			this.dex = 8;
+			setStr(5);
+			setDex(8);
+			setMag(3);
 		}
 		if (vocation.equalsIgnoreCase("wizard")) {
-			this.str = 3;
-			this.mag = 8;
-			this.dex = 5;
+			setStr(3);
+			setDex(5);
+			setMag(8);
 		}
 	}
 
@@ -47,30 +44,6 @@ public class Player extends Character {
 
 	public void setVocation(String vocation) {
 		this.vocation = vocation;
-	}
-
-	public int getStr() {
-		return str;
-	}
-
-	public void setStr(int str) {
-		this.str = str;
-	}
-
-	public int getMag() {
-		return mag;
-	}
-
-	public void setMag(int mag) {
-		this.mag = mag;
-	}
-
-	public int getDex() {
-		return dex;
-	}
-
-	public void setDex(int dex) {
-		this.dex = dex;
 	}
 
 	public boolean hasEscaped() {
@@ -88,13 +61,9 @@ public class Player extends Character {
 	public void setGold(int gold) {
 		this.gold = gold;
 	}
-
-	public void damage(int dam) {
-		setHp(getHp()-dam);
-	}
 	
-	public void heal(int heal) {
-		setHp(getHp()+heal);
+	public void rewardGold(int rewardAmount) {
+		gold = gold + rewardAmount;
 	}
 
 	public String toString() {
@@ -111,13 +80,13 @@ public class Player extends Character {
 	 */
 	public int attack() {
 		if(getVocation().equalsIgnoreCase("warrior")) {
-			return rollDice() + str;
+			return rollDice() + getStr();
 		}else if(getVocation().equalsIgnoreCase("thief")) {
-			return rollDice() + dex;
+			return rollDice() + getDex();
 		}else if(getVocation().equalsIgnoreCase("wizard")) {
-			return rollDice() + mag;
+			return rollDice() + getMag();
 		}
-		return rollDice() + str;
+		return rollDice() + getStr();
 	}
 
 	@Override
