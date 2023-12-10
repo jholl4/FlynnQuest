@@ -101,23 +101,42 @@ public class Player extends Character {
 		DungeonMaster.printHeading("CHARACTER STATUS");
 		return String.format(
 				"You are the %s, %s. You have %d strength, %d magic, and %d dexterity."
-						+ " You are currently carrying %d gold.%n",
-				this.getVocation(), this.getName(), this.getStr(), this.getMag(), this.getDex(), this.getGold());
+						+ " You have %d Hp remaining and are currently carrying %d gold.%n",
+				this.getVocation(), this.getName(), this.getStr(), this.getMag(), this.getDex(), this.getHp(), this.getGold());
 	}
 
 	@Override
+	/**
+	 * Roll a d20 and add stat modifier based on player's vocation
+	 */
 	public int attack() {
-		int atk;
 		if(getVocation().equalsIgnoreCase("warrior")) {
-			
+			return rollDice() + str;
+		}else if(getVocation().equalsIgnoreCase("thief")) {
+			return rollDice() + dex;
+		}else if(getVocation().equalsIgnoreCase("wizard")) {
+			return rollDice() + mag;
+		}else {
+			return rollDice();
 		}
-		return 0;
 	}
 
 	@Override
+	/**
+	 * Currently just implements same logic as attacking...will change later if time allows
+	 */
 	public int defend() {
-		// TODO Auto-generated method stub
-		return 0;
+		return attack();
+	}
+
+	@Override
+	/**
+	 * Gives a random number based on the number of sides assigned to howManySides...used for attack/defend and skill checks
+	 */
+	public int rollDice() {
+		int howManySides = 20;
+		int result = random.nextInt(howManySides);
+		return result;
 	}
 
 }

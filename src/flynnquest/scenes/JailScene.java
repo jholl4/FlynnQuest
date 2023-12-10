@@ -69,9 +69,9 @@ public class JailScene extends Scene {
 		System.out.println("(2) Right");
 		int input = DungeonMaster.readInt("-->", 2);
 		if(input == 1) {
-			DungeonMaster.place = 1;
+			DungeonMaster.scene = 1;
 		}else {
-			DungeonMaster.place = 2;
+			DungeonMaster.scene = 2;
 		}
 		
 

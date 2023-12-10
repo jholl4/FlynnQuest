@@ -1,12 +1,15 @@
 package flynnquest.characters;
 
+import java.util.Random;
+
 public abstract class Character {
 	
 	// properties
 		private String name;
 		private static int maxHp = 100;
 		private int hp;
-		private boolean isAlive;		
+		private boolean isAlive;
+		protected static Random random = new Random();
 		
 	// constructors
 		
@@ -24,8 +27,6 @@ public abstract class Character {
 	}
 	
 	// getters/setters
-	
-
 	
 	public int getHp() {
 		return hp;
@@ -54,6 +55,7 @@ public abstract class Character {
 	// abstract methods for every character
 	public abstract int attack();
 	public abstract int defend();
+	public abstract int rollDice();
 	
 
 }

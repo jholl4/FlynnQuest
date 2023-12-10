@@ -23,8 +23,8 @@ public final class DungeonMaster {
 	public static boolean isRunning;
 	
 	// Story elements---place is used in continueAdventure() to determine the next scene
-	public static int place = 0;
-	public static String[] places = { "Jail", "Round Room", "Wardrobe Room", "Witch's Lair", "Blue Room", "Green Room", "Red Room" };
+	public static int scene = 0;
+	public static String[] scenes = { "Jail", "Round Room", "Wardrobe Room", "Witch's Lair", "Blue Room", "Green Room", "Red Room" };
 
 	/**
 	 * Method to get user input
@@ -86,39 +86,21 @@ public final class DungeonMaster {
 		scanner.next();
 	}
 
-	public static void pickNextScene(int scenePointer) {
-
-		switch (scenePointer) {
-		case 0:
-			
-			break;
-
-		default:
-			break;
-		}
-
-	}
-
-//	public static void runScene(Scene scene) {
+//	public static void pickNextScene(int scenePointer) {
 //
-//		// read scene description
-//		if(scene.getDescription() != null) {
-//			printHeading(scene.getDescription());
-//			pressAnyKey();
+//		switch (scenePointer) {
+//		case 0:
+//			
+//			break;
+//
+//		default:
+//			break;
 //		}
-//		
-//		// Display scene menu and ask user for input
-//		printHeading(scene.getMenu());
-//		scene.setUserInput(readInt(scene.getMenu(), scene.getUserChoices()));
 //
-//		// action happens from input. put a switch method in the scene to determine
-//		// this?
-//		scene.run();
-//		
-//		// param of user input here goes into switch method, then
-//		// is passed to switch and returns result for action?
 //	}
-	
+	/**
+	 * Shows a splash intro screen and then prompts the player to create their character
+	 */
 	public static void startGame() {
 		boolean isNameSet = false;
 		boolean isVocationSet = false;
@@ -137,7 +119,7 @@ public final class DungeonMaster {
 		// get the player's name
 		do {
 			clearConsole();
-			printHeading("What is your heroe's name?");
+			printHeading("What is your hero's name?");
 			name = scanner.next();
 			// ask if player is sure about the name
 			printHeading("Your name is " + name + ". Is that correct?");
@@ -181,9 +163,11 @@ public final class DungeonMaster {
 		isRunning = true;
 	}
 	
-	// method to continue the adventure
+	/**
+	 * Proceeds to next scene/room based on the place variable which was set by the previous room's outcome
+	 */
 	public static void continueAdventure() {
-		switch(place) {
+		switch(scene) {
 		case 0:
 			JailScene.run();
 			break;
@@ -208,17 +192,21 @@ public final class DungeonMaster {
 		}
 	}
 	
-	// check the hero's attributes and gold
+	/**
+	 * check the hero's attributes and gold
+	 */
 	public static void checkHeroStats() {
 		System.out.println(player);
 		pressAnyKey();
 		clearConsole();
 	}
 	
-	// main menu
+	/**
+	 * main menu shown between scenes
+	 */
 	public static void printMenu() {
 		clearConsole();
-		printHeading("Approaching " + places[place]);
+		printHeading("Approaching " + scenes[scene]);
 		System.out.println("Choose an action:");
 		printSeparator(20);
 		System.out.println("(1) Continue your adventure");
@@ -250,6 +238,8 @@ public final class DungeonMaster {
 	}
 	
 	public static void combat(Player player, Monster monster) {
+		printHeading(monster.getName());
+		System.out.println();
 		
 	}
 
