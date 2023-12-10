@@ -4,11 +4,18 @@ public abstract class Character {
 	
 	// properties
 		private String name;
-		private int maxHp;
+		private static int maxHp = 100;
 		private int hp;
 		private boolean isAlive;		
 		
 	// constructors
+		
+	public Character() {
+		this.name = "Unknown Hero";
+		this.hp = maxHp;
+		this.isAlive = true;
+	}
+		
 	public Character(String name, int maxHp) {
 		this.name = name;
 		this.maxHp = maxHp;

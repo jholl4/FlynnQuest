@@ -2,8 +2,8 @@ package flynnquest.characters;
 
 import flynnquest.dungeonmaster.DungeonMaster;
 
-public abstract class Player extends Character {
-	
+public class Player extends Character {
+
 	// properties
 	private String vocation;
 	private int str;
@@ -11,23 +11,40 @@ public abstract class Player extends Character {
 	private int dex;
 	private boolean hasEscaped; // should start as false
 	private int gold;
-	
+
 	// constructors
+
+	public Player() {
+		super();
+	}
+
 	public Player(String name, String vocation) {
 		super(name, 100);
 		this.vocation = vocation;
 		this.hasEscaped = false;
-		this.str = 0;
-		this.mag = 0;
-		this.dex = 0;
+		if (vocation.equalsIgnoreCase("warrior")) {
+			this.str = 8;
+			this.mag = 3;
+			this.dex = 5;
+		}
+		if (vocation.equalsIgnoreCase("thief")) {
+			this.str = 5;
+			this.mag = 3;
+			this.dex = 8;
+		}
+		if (vocation.equalsIgnoreCase("wizard")) {
+			this.str = 3;
+			this.mag = 8;
+			this.dex = 5;
+		}
 	}
-	
+
 	// getters/setters
 
 	public String getVocation() {
 		return vocation;
 	}
-	
+
 	public void setVocation(String vocation) {
 		this.vocation = vocation;
 	}
@@ -56,7 +73,7 @@ public abstract class Player extends Character {
 		this.dex = dex;
 	}
 
-	public boolean isHasEscaped() {
+	public boolean hasEscaped() {
 		return hasEscaped;
 	}
 
@@ -71,19 +88,33 @@ public abstract class Player extends Character {
 	public void setGold(int gold) {
 		this.gold = gold;
 	}
-	
-	// abstract methods
 
-	public abstract int attack();
-
-	public abstract int defend();
-	
-	public String toString() {
-		DungeonMaster.printHeading("CHARACTER STATUS");
-		return String.format("You are the %s, %s. You have %d strength, %d magic, and %d dexterity."
-				+ " You are currently carrying %d gold.%n", this.getVocation(), this.getName(), this.getStr(),
-				this.getMag(), this.getDex(), this.getGold() );
+	public void damage(int dam) {
+		setHp(getHp()-dam);
 	}
 	
+	public void heal(int heal) {
+		setHp(getHp()+heal);
+	}
+
+	public String toString() {
+		DungeonMaster.printHeading("CHARACTER STATUS");
+		return String.format(
+				"You are the %s, %s. You have %d strength, %d magic, and %d dexterity."
+						+ " You are currently carrying %d gold.%n",
+				this.getVocation(), this.getName(), this.getStr(), this.getMag(), this.getDex(), this.getGold());
+	}
+
+	@Override
+	public int attack() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int defend() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }
