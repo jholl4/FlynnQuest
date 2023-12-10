@@ -107,7 +107,10 @@ public class Player extends Character {
 
 	@Override
 	public int attack() {
-		// TODO Auto-generated method stub
+		int atk;
+		if(getVocation().equalsIgnoreCase("warrior")) {
+			
+		}
 		return 0;
 	}
 

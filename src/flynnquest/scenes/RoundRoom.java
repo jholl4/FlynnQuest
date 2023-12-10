@@ -17,7 +17,7 @@ public class RoundRoom extends Scene{
 
 	public static void run() {
 		
-		DungeonMaster.place = 4;
+		
 	}
 
 }

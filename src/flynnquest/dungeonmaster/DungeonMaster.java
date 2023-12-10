@@ -6,6 +6,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import flynnquest.characters.Player;
+import flynnquest.characters.monsters.Monster;
 import flynnquest.scenes.BlueRoom;
 import flynnquest.scenes.JailScene;
 import flynnquest.scenes.RoundRoom;
@@ -246,6 +247,10 @@ public final class DungeonMaster {
 		System.out.printf("Rolling d%d for %s...%n", howManySides, statName);
 		System.out.printf("You rolled %d; combined with your %d %s you got a %d!%n", result, statValue, statName, total);
 		return total;
+	}
+	
+	public static void combat(Player player, Monster monster) {
+		
 	}
 
 
