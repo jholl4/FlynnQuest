@@ -6,9 +6,9 @@ public class Player extends Character {
 
 	// properties
 	private String vocation;
-	private int str;
-	private int mag;
-	private int dex;
+//	private int str;
+//	private int mag;
+//	private int dex;
 	private boolean hasEscaped; // should start as false
 	private int gold;
 
@@ -116,9 +116,8 @@ public class Player extends Character {
 			return rollDice() + dex;
 		}else if(getVocation().equalsIgnoreCase("wizard")) {
 			return rollDice() + mag;
-		}else {
-			return rollDice();
 		}
+		return rollDice() + str;
 	}
 
 	@Override
@@ -129,14 +128,14 @@ public class Player extends Character {
 		return attack();
 	}
 
-	@Override
-	/**
-	 * Gives a random number based on the number of sides assigned to howManySides...used for attack/defend and skill checks
-	 */
-	public int rollDice() {
-		int howManySides = 20;
-		int result = random.nextInt(howManySides);
-		return result;
-	}
+//	@Override
+//	/**
+//	 * Gives a random number based on the number of sides assigned to howManySides...used for attack/defend and skill checks
+//	 */
+//	public int rollDice() {
+//		int howManySides = 20;
+//		int result = random.nextInt(howManySides);
+//		return result;
+//	}
 
 }

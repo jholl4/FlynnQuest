@@ -237,9 +237,16 @@ public final class DungeonMaster {
 		return total;
 	}
 	
+	/**
+	 * Opposing "dice rolls* determine damage to player and monster until only one remains
+	 * @param player
+	 * @param monster
+	 */
 	public static void combat(Player player, Monster monster) {
 		printHeading(monster.getName());
-		System.out.println();
+		while(player.isAlive() && monster.isAlive()) {
+			
+		}
 		
 	}
 

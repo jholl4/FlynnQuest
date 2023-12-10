@@ -10,6 +10,9 @@ public abstract class Character {
 		private int hp;
 		private boolean isAlive;
 		protected static Random random = new Random();
+		private int str;
+		private int mag;
+		private int dex;
 		
 	// constructors
 		
@@ -51,11 +54,17 @@ public abstract class Character {
 	public int getMaxHp() {
 		return maxHp;
 	}
+	
+	protected int rollDice() {
+		int howManySides = 20;
+		int result = random.nextInt(howManySides);
+		return result;
+	}
 
 	// abstract methods for every character
 	public abstract int attack();
 	public abstract int defend();
-	public abstract int rollDice();
+//	public abstract int rollDice();
 	
 
 }
