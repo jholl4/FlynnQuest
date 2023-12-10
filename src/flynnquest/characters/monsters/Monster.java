@@ -61,7 +61,7 @@ public abstract class Monster extends Character{
 	
 	@Override
 	public String toString() {
-		return "";
+		return String.format("%s with %d Hp remaining.", getName(), getHp());
 	}
 
 
