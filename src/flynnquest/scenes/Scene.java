@@ -2,7 +2,7 @@ package flynnquest.scenes;
 
 import java.util.ArrayList;
 
-import flynnquest.characters.Monster;
+import flynnquest.characters.monsters.Monster;
 
 public abstract class Scene {
 	

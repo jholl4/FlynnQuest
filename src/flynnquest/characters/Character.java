@@ -11,7 +11,7 @@ public abstract class Character {
 	// constructors
 		
 	public Character() {
-		this.name = "Unknown Hero";
+		this.name = "Unknown";
 		this.hp = maxHp;
 		this.isAlive = true;
 	}

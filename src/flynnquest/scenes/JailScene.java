@@ -1,6 +1,6 @@
 package flynnquest.scenes;
 
-import flynnquest.characters.Monster;
+import flynnquest.characters.monsters.Monster;
 import flynnquest.dungeonmaster.DungeonMaster;
 
 public class JailScene extends Scene {

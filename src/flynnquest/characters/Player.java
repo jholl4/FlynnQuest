@@ -15,7 +15,7 @@ public class Player extends Character {
 	// constructors
 
 	public Player() {
-		super();
+		super("Unknown Hero", 100);
 	}
 
 	public Player(String name, String vocation) {
