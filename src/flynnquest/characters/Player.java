@@ -7,6 +7,8 @@ public class Player extends Character {
 	// properties
 	private String vocation;
 	private boolean hasEscaped; // should start as false
+	private int hpPotCount; // number of hp potions held
+	private boolean hasLockPick;
 	private int gold;
 
 	// constructors
@@ -19,6 +21,7 @@ public class Player extends Character {
 		super(name, 20);
 		this.vocation = vocation;
 		this.hasEscaped = false;
+		this.hasLockPick = false;
 		if (vocation.equalsIgnoreCase("warrior")) {
 			setStr(8);
 			setDex(5);
@@ -37,9 +40,32 @@ public class Player extends Character {
 	}
 
 	// getters/setters
+	
+	
 
 	public String getVocation() {
 		return vocation;
+	}
+
+	/**
+	 * @return the healthPotionCount
+	 */
+	public int getHpPotCount() {
+		return hpPotCount;
+	}
+
+	/**
+	 * @return the hasLockPick
+	 */
+	public boolean hasLockPick() {
+		return hasLockPick;
+	}
+
+	/**
+	 * @param hasLockPick the hasLockPick to set
+	 */
+	public void setHasLockPick(boolean hasLockPick) {
+		this.hasLockPick = hasLockPick;
 	}
 
 	public void setVocation(String vocation) {
@@ -64,7 +90,20 @@ public class Player extends Character {
 	
 	public void lootGold(int rewardAmount) {
 		gold = gold + rewardAmount;
-		DungeonMaster.printHeading(String.format("You gained %d gold!%n", rewardAmount));
+		DungeonMaster.printHeading(String.format("You gained %d gold!", rewardAmount));
+	}
+	
+	public void lootHpPot() {
+		if (hpPotCount <= 3) {
+			hpPotCount++;
+		}
+	}
+	
+	public void drinkHpPot() {
+		if (hpPotCount < 0) {
+			heal(5);
+			hpPotCount--;
+		}
 	}
 
 	public String toString() {

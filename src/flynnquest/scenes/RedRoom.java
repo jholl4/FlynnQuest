@@ -91,6 +91,8 @@ public class RedRoom extends Scene {
 			}
 
 		} while (!isRoomResolved);
+		
+		DungeonMaster.scene = 7;
 
 	}
 

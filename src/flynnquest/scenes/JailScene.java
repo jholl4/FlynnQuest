@@ -28,6 +28,7 @@ public class JailScene extends Scene {
 			switch (input) {
 			case 1:
 				System.out.println("You find a lockpick!");
+				DungeonMaster.player.setHasLockPick(true);
 				if (DungeonMaster.skillCheck(20, "dexterity", DungeonMaster.player.getDex()) >= 15) {
 					System.out.println("You manage to pick the lock and make your way out of the jail area.");
 					isDoorOpen = true;
@@ -44,7 +45,7 @@ public class JailScene extends Scene {
 					break;
 				}else {
 					System.out.println("Your frail body makes a strange cracking sound as it impacts the door...lose 10 hp.");
-					DungeonMaster.player.damage(10);
+					DungeonMaster.player.damage(5);
 					break;
 				}
 			case 3:
