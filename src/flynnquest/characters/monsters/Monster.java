@@ -11,9 +11,10 @@ public abstract class Monster extends Character{
 		super(name, maxHp);
 	}
 	
-	public Monster(String name, int maxHp, int str, int dex, int mag, int armor) {
+	public Monster(String name, int maxHp, int str, int dex, int mag, int armor, int goldReward) {
 		super(name, maxHp, str, dex, mag);
 		this.armor = armor;
+		this.goldReward = goldReward;
 	}
 	
 	@Override

@@ -16,7 +16,7 @@ public class Player extends Character {
 	}
 
 	public Player(String name, String vocation) {
-		super(name, 100);
+		super(name, 20);
 		this.vocation = vocation;
 		this.hasEscaped = false;
 		if (vocation.equalsIgnoreCase("warrior")) {
@@ -62,7 +62,7 @@ public class Player extends Character {
 		this.gold = gold;
 	}
 	
-	public void rewardGold(int rewardAmount) {
+	public void lootGold(int rewardAmount) {
 		gold = gold + rewardAmount;
 	}
 

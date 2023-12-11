@@ -6,11 +6,8 @@ import flynnquest.dungeonmaster.DungeonMaster;
 public class JailScene extends Scene {
 	
 	private static String name = "Jail";
-	private static int sceneId = 0;
 	private static  Monster monster = null;
-	private static int scenePointer = -1;
 	private static int gold = 0;
-
 	private static boolean isDoorOpen = false;
 	private static String description = "It's difficult to tell in the dimly lit dungeon that you"
 			+ " seem to have found yourself in, but it seems that there is nothing "
@@ -31,7 +28,7 @@ public class JailScene extends Scene {
 			switch (input) {
 			case 1:
 				System.out.println("You find a lockpick!");
-				if (DungeonMaster.rollDice(20, "dexterity", DungeonMaster.player.getDex()) >= 15) {
+				if (DungeonMaster.skillCheck(20, "dexterity", DungeonMaster.player.getDex()) >= 15) {
 					System.out.println("You manage to pick the lock and make your way out of the jail area.");
 					isDoorOpen = true;
 					break;
@@ -41,7 +38,7 @@ public class JailScene extends Scene {
 				}
 			case 2:
 				System.out.println("You throw all of your strength at the door!");
-				if(DungeonMaster.rollDice(20, "strength", DungeonMaster.player.getStr()) >= 15) {
+				if(DungeonMaster.skillCheck(20, "strength", DungeonMaster.player.getStr()) >= 15) {
 					System.out.println("After a few bashes to the cell's door, it gives way and you exit the cell.");
 					isDoorOpen = true;
 					break;
@@ -52,7 +49,7 @@ public class JailScene extends Scene {
 				}
 			case 3:
 				System.out.println("You sense a power deep inside you and call to it.");
-				if(DungeonMaster.rollDice(20, "magic", DungeonMaster.player.getMag()) >= 15) {
+				if(DungeonMaster.skillCheck(20, "magic", DungeonMaster.player.getMag()) >= 15) {
 					System.out.println("Intense cold air suddenly flows from your fingertips into the lock. You tap on the lock and it shatters!");
 					isDoorOpen = true;
 					break;
@@ -68,6 +65,10 @@ public class JailScene extends Scene {
 		System.out.println("(1) Left");
 		System.out.println("(2) Right");
 		int input = DungeonMaster.readInt("-->", 2);
+		if(!DungeonMaster.player.isAlive()) {
+			DungeonMaster.scene = 7;
+			return;
+		}
 		if(input == 1) {
 			DungeonMaster.scene = 1;
 		}else {

@@ -6,11 +6,9 @@ import flynnquest.characters.monsters.Monster;
 
 public abstract class Scene {
 	
-	private int sceneId; // used by scene pointers
 	private String name; // name of scene
 	private String description; // description of scene, usually about a paragraph
 	private Monster monster; // monster object
-	private int scenePointer; // int to indicate what scene is next
 	private int gold; // amount of gold that may be used as a reward
 	private String menu; // TODO figure out what to do with this
 	private int userChoices; // TODO maybe use an array of ints to allow user input here
@@ -18,17 +16,14 @@ public abstract class Scene {
 	
 	// Constructors
 	public Scene() {
-		this.sceneId = -1;
 		this.name = "";
 		this.description = "";
 		this.menu = "";
 		this.monster = null;
-		this.scenePointer = -1;
 		this.gold = 0;
 	}
 	
 	public Scene(int sceneId, String name, String description, Monster monster, int gold, String menu, int userChoices) {
-		this.sceneId = sceneId;
 		this.name = name;
 		this.description = description;
 		this.monster = monster;
@@ -37,21 +32,6 @@ public abstract class Scene {
 		this.userChoices = userChoices;
 	}
 	
-	
-
-	/**
-	 * @return the sceneId
-	 */
-	public int getSceneId() {
-		return sceneId;
-	}
-
-	/**
-	 * @param sceneId the sceneId to set
-	 */
-	public void setSceneId(int sceneId) {
-		this.sceneId = sceneId;
-	}
 
 	/**
 	 * @return the name
@@ -93,20 +73,6 @@ public abstract class Scene {
 	 */
 	public void setMonster(Monster monster) {
 		this.monster = monster;
-	}
-
-	/**
-	 * @return the scenePointer
-	 */
-	public int getScenePointer() {
-		return scenePointer;
-	}
-
-	/**
-	 * @param scenePointer the scenePointer to set
-	 */
-	public void setScenePointer(int scenePointer) {
-		this.scenePointer = scenePointer;
 	}
 
 	/**

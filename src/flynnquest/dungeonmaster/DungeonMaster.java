@@ -1,13 +1,12 @@
 package flynnquest.dungeonmaster;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
 import flynnquest.characters.Player;
 import flynnquest.characters.monsters.Monster;
 import flynnquest.scenes.BlueRoom;
+import flynnquest.scenes.GameOver;
 import flynnquest.scenes.JailScene;
 import flynnquest.scenes.RoundRoom;
 import flynnquest.scenes.Scene;
@@ -22,9 +21,9 @@ public final class DungeonMaster {
 	
 	public static boolean isRunning;
 	
-	// Story elements---place is used in continueAdventure() to determine the next scene
+	// Story elements---scene is used in continueAdventure() to determine the next scene and modified at the end of each scene
 	public static int scene = 0;
-	public static String[] scenes = { "Jail", "Round Room", "Wardrobe Room", "Witch's Lair", "Blue Room", "Green Room", "Red Room" };
+	public static String[] scenes = { "Jail", "Round Room", "Wardrobe Room", "Witch's Lair", "Blue Room", "Green Room", "Red Room", "Game Over" };
 
 	/**
 	 * Method to get user input
@@ -131,7 +130,7 @@ public final class DungeonMaster {
 			if(input == 2)
 				vocation = "Thief";
 			if(input == 3)
-				vocation = "Wizard";
+				vocation = "Mage";
 			// ask if player is sure about their vocation
 			printHeading("Your vocation is " + vocation + ". Is that correct?");
 			System.out.println("(1) Yes!");
@@ -177,6 +176,9 @@ public final class DungeonMaster {
 //		case 6:
 //			RedRoom.run();
 //			break;
+		case 7:
+			GameOver.run();
+			break;
 		}
 	}
 	
@@ -202,7 +204,9 @@ public final class DungeonMaster {
 		System.out.println("(3) Exit the game");
 	}
 	
-	// main game loop with menu to continue, check hero stats or exit the game
+	/**
+	 * main game loop with menu to continue, check hero stats or exit the game
+	 */
 	public static void gameLoop(){
 		while(isRunning) {
 			printMenu();
@@ -216,9 +220,21 @@ public final class DungeonMaster {
 		}
 	}
 	
-	// dice roll added to specified stat
-	public static int rollDice(int howManySides, String statName, int statValue) {
-		int result =  random.nextInt(howManySides);
+	public static int rollDice(int howManySides) {
+		int result =  random.nextInt(howManySides)+1;
+//		System.out.println("rolled " + result);
+		return result;
+	}
+	
+	/**
+	 * dice roll added to specified stat. howManySides refers to how many sides on a die to "roll".
+	 * @param howManySides
+	 * @param statName
+	 * @param statValue
+	 * @return
+	 */
+	public static int skillCheck(int howManySides, String statName, int statValue) {
+		int result =  random.nextInt(howManySides)+1;
 		int total = result + statValue;
 		System.out.printf("Rolling d%d for %s...%n", howManySides, statName);
 		System.out.printf("You rolled %d; combined with your %d %s you got a %d!%n", result, statValue, statName, total);
@@ -231,31 +247,44 @@ public final class DungeonMaster {
 	 * @param monster
 	 */
 	public static void combat(Player player, Monster monster) {
-		printHeading(monster.getName());
+		printHeading(monster.getName() + " BATTLE!");
 		while(player.isAlive() && monster.isAlive()) {
+			pressAnyKey();
 			// player attacks, monster defends then check isAlive for both
+			System.out.printf("%n%s attacks the monster!%n", player.getName());
 			int pAtk = player.attack();
 			int mDef = monster.defend();
 			// if player's attack meets or exceeds monster defense, reduce monster's health
-			if(pAtk >= mDef) {
+			if(pAtk > mDef) {
 				monster.damage(pAtk - mDef);
+				System.out.printf("%s's attack strikes the %s, dealing %d damage! It has %d Hp remaining!%n", player.getName(), monster.getName(), pAtk-mDef, monster.getHp());
+				pressAnyKey();
+			}else if(!(pAtk > mDef)) {
+				System.out.println("Swing and a miss!");
+				pressAnyKey();
 			}
 			if(!monster.isAlive()) {
 				System.out.printf("The %s has been defeated!%n", monster.getName());
 				System.out.printf("You recieve %d gold! Way to go!%n", monster.getGoldReward());
-				player.rewardGold(monster.getGoldReward());
+				player.lootGold(monster.getGoldReward());
+				pressAnyKey();
 				return;
 			}
 			
 			// monster attacks, player defends then check isAlive for both
+			System.out.printf("%nThe %s attacks %s!%n", monster.getName(), player.getName());
 			int mAtk = monster.attack();
 			int pDef = player.defend();
 			// if monster's attack meets or exceeds player's defense, reduce player's health
-			if(mAtk >= pDef) {
+			if(mAtk > pDef) {
 				player.damage(mAtk - pDef);
+				System.out.printf("The %s's attack is successful and deals %d damage! %s has %d Hp remaining!%n", monster.getName(), mAtk-pDef, player.getName(), player.getHp());
+			}else if(!(mAtk > pDef)) {
+				System.out.println("Swing and a miss!");
 			}
 			if(!player.isAlive()) {
 				System.out.printf("Oh no! %s has been defeated in combat with the %s!%n", player.getName(), monster.getName());
+				pressAnyKey();
 				return;
 			}
 		}

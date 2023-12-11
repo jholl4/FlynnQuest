@@ -39,6 +39,7 @@ public abstract class Character {
 		this.str = str;
 		this.dex = dex;
 		this.mag = mag;
+		this.isAlive = true;
 	}
 	
 	// getters/setters
@@ -146,7 +147,7 @@ public abstract class Character {
 
 	protected int rollDice() {
 		int howManySides = 20;
-		int result = random.nextInt(howManySides);
+		int result = random.nextInt(howManySides)+1;
 		return result;
 	}
 
