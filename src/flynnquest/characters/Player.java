@@ -64,6 +64,7 @@ public class Player extends Character {
 	
 	public void lootGold(int rewardAmount) {
 		gold = gold + rewardAmount;
+		DungeonMaster.printHeading(String.format("You gained %d gold!%n", rewardAmount));
 	}
 
 	public String toString() {

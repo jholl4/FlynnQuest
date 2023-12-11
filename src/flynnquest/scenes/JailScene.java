@@ -21,7 +21,7 @@ public class JailScene extends Scene {
 		do {
 			System.out.println(description);
 			System.out.println("What do you do?");
-			System.out.println("(1) search the pile of straw for something useful");
+			System.out.println("(1) Search the pile of straw for something useful");
 			System.out.println("(2) Attempt to force the door open");
 			System.out.println("(3) Cast a spell on the padlock");
 			int input = DungeonMaster.readInt("-->", 3);

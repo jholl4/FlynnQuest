@@ -48,6 +48,7 @@ public class BlueRoom extends Scene {
 							System.out.println("Once you have had some time to catch your breath, you make your way out through the cave mouth and head back to town.");
 							DungeonMaster.pressAnyKey();
 							hasPlayerCrossedWater = true;
+							DungeonMaster.player.setHasEscaped(true);
 							break;
 						}else {
 							System.out.println("You give it your best, but unfortunately your best is not enough.");
@@ -70,6 +71,7 @@ public class BlueRoom extends Scene {
 					System.out.println("You've made it to the other side and freedom! Grateful for a successful escape, you make your way back to town.");
 					DungeonMaster.pressAnyKey();
 					hasPlayerCrossedWater = true;
+					DungeonMaster.player.setHasEscaped(true);
 					break;
 				}
 				System.out.println("The boat rapidly takes on water as you paddle. Maybe this wasn't a good idea...");
@@ -85,6 +87,7 @@ public class BlueRoom extends Scene {
 					System.out.println("You've made it to the other side, to freedom! Just to prove that it wasn't a fluke, you float your way back to town.");
 					DungeonMaster.pressAnyKey();
 					hasPlayerCrossedWater = true;
+					DungeonMaster.player.setHasEscaped(true);
 					break;
 				}
 				System.out.println("As you fly out over the water, you realize you aren't floating, as your trajectory rapidly declines toward the water below.");

@@ -139,15 +139,29 @@ public abstract class Character {
 	
 	public void damage(int dam) {
 		setHp(getHp()-dam);
+		System.out.printf("%s has %d Hp remaining.%n", name, hp);
 	}
 	
 	public void heal(int heal) {
 		setHp(getHp()+heal);
 	}
 
-	protected int rollDice() {
+	public int rollDice() {
 		int howManySides = 20;
+		System.out.println("Rolling the d20...");
+		System.out.println("     _,--\"^\"--._     \r\n"
+				+ "   ,'\\         /`.   \r\n"
+				+ " ,'   \\_______/   `. \r\n"
+				+ "|     /       \\     |\r\n"
+				+ "|    /         \\    |\r\n"
+				+ "|  _/           \\_  |\r\n"
+				+ "\\'' `-.       ,-' ``/\r\n"
+				+ " \\     `-._,-'     / \r\n"
+				+ "  \\       |       /  \r\n"
+				+ "   `-.._  |  _,,-'   \r\n"
+				+ "        ``\"''        ");
 		int result = random.nextInt(howManySides)+1;
+		System.out.printf("%s rolled %d!%n", name, result);
 		return result;
 	}
 

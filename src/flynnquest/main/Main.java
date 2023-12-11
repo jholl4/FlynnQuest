@@ -1,10 +1,6 @@
 package flynnquest.main;
 
-import java.util.Random;
-
-import flynnquest.characters.*;
 import flynnquest.dungeonmaster.DungeonMaster;
-import flynnquest.scenes.Scene;
 
 public class Main {
 
@@ -16,9 +12,7 @@ public class Main {
 		DungeonMaster.startGame();
 		DungeonMaster.gameLoop();
 		
-		System.out.println("Thank you for playing!");
-		
-		
+		System.out.println("Thank you for playing Flynn Quest!");
 		
 		DungeonMaster.scanner.close();
 		
