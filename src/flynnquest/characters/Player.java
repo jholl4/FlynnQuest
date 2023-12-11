@@ -101,8 +101,11 @@ public class Player extends Character {
 	
 	public void drinkHpPot() {
 		if (hpPotCount < 0) {
+			System.out.println("Drinking an Hp potion...you are being healed!");
 			heal(5);
 			hpPotCount--;
+			System.out.printf("You now have %d Hp!%n", getHp());
+			DungeonMaster.pressAnyKey();
 		}
 	}
 

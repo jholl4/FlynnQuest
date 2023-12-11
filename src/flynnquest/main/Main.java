@@ -12,12 +12,8 @@ public class Main {
 		DungeonMaster.startGame();
 		DungeonMaster.gameLoop();
 		
-		System.out.println("Thank you for playing Flynn Quest!");
-		
 		DungeonMaster.scanner.close();
 		
-		
-
 	}
 
 }

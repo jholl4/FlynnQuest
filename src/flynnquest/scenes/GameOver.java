@@ -37,6 +37,8 @@ public class GameOver extends Scene{
 				+ ":......::::.......:::..::::..:::......::::..:::::..::..:::::..:::::..::::::.......:::........::..:::::..:::::..:::::....:::.......:::..::::..:::......:::....::");
 		System.out.printf("You did it! You were able to escape from the dungeon! You have %d Hp left, and you were able to amass a fortune of %d gold along the way!%n", DungeonMaster.player.getHp(), DungeonMaster.player.getGold());
 		System.out.println();
+		System.out.println("Thank you very much for playing!");
+		System.out.println("Special thanks to my awesome son Flynn for his major contributions to the dungeon layout and story!");
 		DungeonMaster.isRunning = false;
 	}
 

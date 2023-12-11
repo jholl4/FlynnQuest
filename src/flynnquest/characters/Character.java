@@ -143,7 +143,11 @@ public abstract class Character {
 	}
 	
 	protected void heal(int heal) {
-		setHp(getHp()+heal);
+		if(getHp()+heal <= maxHp) {
+			setHp(getHp()+heal);
+		}else {
+			setHp(maxHp);
+		}
 	}
 
 	public int rollDice() {

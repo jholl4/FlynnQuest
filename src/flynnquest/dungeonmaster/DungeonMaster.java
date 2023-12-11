@@ -12,6 +12,7 @@ import flynnquest.scenes.JailScene;
 import flynnquest.scenes.RedRoom;
 import flynnquest.scenes.RoundRoom;
 import flynnquest.scenes.Scene;
+import flynnquest.scenes.WardrobeRoom;
 import flynnquest.scenes.WitchLair;
 
 public final class DungeonMaster {
@@ -177,12 +178,12 @@ public final class DungeonMaster {
 		case 1:
 			RoundRoom.run();
 			break;
-//		case 2:
-//			WardrobeRoom.run();
-//			break;
-//		case 3:
-//			WitchLair.run();
-//			break;
+		case 2:
+			WardrobeRoom.run();
+			break;
+		case 3:
+			WitchLair.run();
+			break;
 		case 4:
 			BlueRoom.run();
 			break;
@@ -215,9 +216,17 @@ public final class DungeonMaster {
 		printHeading("Approaching " + scenes[scene]);
 		System.out.println("Choose an action:");
 		printSeparator(20);
-		System.out.println("(1) Continue your adventure");
-		System.out.println("(2) Check your hero's status");
-		System.out.println("(3) Exit the game");
+		if(player.getHpPotCount() < 0) {
+			System.out.println("(1) Continue your adventure");
+			System.out.println("(2) Check your hero's status");
+			System.out.printf("(3) Drink an Hp Potion (you have %d)", player.getHpPotCount());
+			System.out.println("(4) Exit the game");
+		}else {
+			System.out.println("(1) Continue your adventure");
+			System.out.println("(2) Check your hero's status");
+			System.out.println("(3) Exit the game");
+			
+		}
 	}
 	
 	/**
@@ -226,13 +235,28 @@ public final class DungeonMaster {
 	public static void gameLoop(){
 		while(isRunning) {
 			printMenu();
-			int input = readInt("-->", 3);
-			if(input == 1)
-				continueAdventure();
-			else if(input == 2)
-				checkHeroStats();
-			else
-				isRunning = false;
+			
+			if(player.getHpPotCount() < 0) {
+				int input = readInt("-->", 3);
+				if(input == 1)
+					continueAdventure();
+				else if(input == 2)
+					checkHeroStats();
+				else if(input == 3)
+					player.drinkHpPot();
+				else
+					isRunning = false;
+				
+			}else {
+				int input = readInt("-->", 3);
+				if(input == 1)
+					continueAdventure();
+				else if(input == 2)
+					checkHeroStats();
+				else
+					isRunning = false;
+			}
+			
 		}
 	}
 	
@@ -269,7 +293,7 @@ public final class DungeonMaster {
 		int total = result + statValue;
 		System.out.printf("Adding your %s...%n", statName);
 		System.out.printf("You rolled %d; combined with your %d %s you got a"
-				+ " %d!%n", result, statValue, statName, total);
+				+ " %d!%n%n", result, statValue, statName, total);
 		return total;
 	}
 	
