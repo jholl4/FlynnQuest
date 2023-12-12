@@ -4,7 +4,10 @@ import flynnquest.dungeonmaster.DungeonMaster;
 
 public class GameOver extends Scene{
 	
+	private static int playerScore;
+	
 	public static void run() {
+		playerScore = DungeonMaster.player.getGold() + DungeonMaster.player.getHp() + (DungeonMaster.player.getHpPotCount() * 10);
 		
 		if(!DungeonMaster.player.isAlive()) {
 			DungeonMaster.printHeading("                                                                                                                                    \r\n"
@@ -23,8 +26,8 @@ public class GameOver extends Scene{
 					+ "        '                                                   '                                                    '                  ");
 			System.out.println("Alas, you were not able to make it out of the dungeon...");
 			System.out.printf("Before you were obliterated by the dungeon, you were able to score %d gold.%n", DungeonMaster.player.getGold());
+			System.out.printf("Your total score based on your health and everything you earned is %d%n", playerScore);
 			DungeonMaster.isRunning = false;
-			return;
 		}
 		
 		DungeonMaster.printHeading(":'######:::'#######::'##::: ##::'######:::'########:::::'###::::'########:'##::::'##:'##::::::::::'###::::'########:'####::'#######::'##::: ##::'######::'####:\r\n"

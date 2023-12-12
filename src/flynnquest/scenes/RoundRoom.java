@@ -19,7 +19,7 @@ public class RoundRoom extends Scene{
 			+ "Behind the altar, on the edge of the room, there are three doors with large crystals matching the stones on the altar.");
 	
 	public static void run() {
-		System.out.println("You exit the passageway, and a large, round room opens up before you.");
+		System.out.println("A large, round room opens up before you.");
 		
 		if(!isBlueChosen && !isGreenChosen && !isRedChosen) {
 			int stonePicker = DungeonMaster.rollDice(3);

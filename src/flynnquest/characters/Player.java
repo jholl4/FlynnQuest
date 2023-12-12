@@ -113,8 +113,8 @@ public class Player extends Character {
 		DungeonMaster.printHeading("CHARACTER STATUS");
 		return String.format(
 				"You are the %s, %s. You have %d strength, %d magic, and %d dexterity."
-						+ " You have %d Hp remaining and are currently carrying %d gold.%n",
-				this.getVocation(), this.getName(), this.getStr(), this.getMag(), this.getDex(), this.getHp(), this.getGold());
+						+ " You have %d Hp remaining and are carrying %d healing potions and %d gold.%n",
+				this.getVocation(), this.getName(), this.getStr(), this.getMag(), this.getDex(), this.getHp(), this.getHpPotCount(), this.getGold());
 	}
 
 	@Override
