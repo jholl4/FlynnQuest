@@ -5,13 +5,13 @@ import java.util.Scanner;
 
 import flynnquest.characters.Player;
 import flynnquest.characters.monsters.Monster;
+import flynnquest.main.Main;
 import flynnquest.scenes.BlueRoom;
-import flynnquest.scenes.GameOver;
+import flynnquest.scenes.GameEnd;
 import flynnquest.scenes.GreenRoom;
 import flynnquest.scenes.JailScene;
 import flynnquest.scenes.RedRoom;
 import flynnquest.scenes.RoundRoom;
-import flynnquest.scenes.Scene;
 import flynnquest.scenes.WardrobeRoom;
 import flynnquest.scenes.WitchLair;
 
@@ -90,6 +90,7 @@ public final class DungeonMaster {
 	public static void pressAnyKey() {
 		System.out.print("\nEnter anything to continue>>>");
 		scanner.next();
+		DungeonMaster.clearConsole();
 	}
 
 	/**
@@ -98,9 +99,10 @@ public final class DungeonMaster {
 	 */
 	public static void startGame() {
 		boolean isNameSet = false;
-		boolean isVocationSet = false;
 		String name;
 		String vocation = null;
+		isRunning = true;
+		Main.isRunning = true;
 		// print title screen
 		clearConsole();
 		printSeparator(120);
@@ -151,8 +153,8 @@ public final class DungeonMaster {
 			System.out.println("(1) Yes!");
 			System.out.println("(2) No, I've changed my mind.");
 			input = readInt("-->", 2);
-			if(input == 1)
-				isVocationSet = true;
+			if(input == 1) {
+			}
 		}while(!isNameSet);
 		
 		// create the player object with the name
@@ -194,7 +196,7 @@ public final class DungeonMaster {
 			RedRoom.run();
 			break;
 		case 7:
-			GameOver.run();
+			GameEnd.run();
 			break;
 		}
 	}
@@ -205,7 +207,6 @@ public final class DungeonMaster {
 	public static void checkHeroStats() {
 		System.out.println(player);
 		pressAnyKey();
-		clearConsole();
 	}
 	
 	/**
@@ -217,12 +218,12 @@ public final class DungeonMaster {
 		System.out.println("Choose an action:");
 		printSeparator(20);
 		if(player.getHpPotCount() < 0) {
-			System.out.println("(1) Continue your adventure");
+			System.out.println("(1) Continue");
 			System.out.println("(2) Check your hero's status");
 			System.out.printf("(3) Drink an Hp Potion (you have %d)", player.getHpPotCount());
 			System.out.println("(4) Exit the game");
 		}else {
-			System.out.println("(1) Continue your adventure");
+			System.out.println("(1) Continue");
 			System.out.println("(2) Check your hero's status");
 			System.out.println("(3) Exit the game");
 			

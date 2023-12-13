@@ -54,23 +54,33 @@ public class WitchLair extends Scene {
 	
 	public static void run() {
 		//These ints used to randomize what riddles are pulled from the arrays
-		int riddle1 = DungeonMaster.rollDice(riddleList.length);
-		int riddle2 = DungeonMaster.rollDice(riddleList.length);
+		int riddle1 = DungeonMaster.rollDice(riddleList.length)-1;
+		int riddle2 = DungeonMaster.rollDice(riddleList.length)-1;
 		while(riddle2==riddle1) {
-			riddle2 = DungeonMaster.rollDice(riddleList.length);
+			riddle2 = DungeonMaster.rollDice(riddleList.length)-1;
 		}
-		int riddle3 = DungeonMaster.rollDice(riddleList.length);
+		int riddle3 = DungeonMaster.rollDice(riddleList.length-1);
 		while (riddle3 == riddle1 || riddle3 == riddle2) {
-			riddle3 = DungeonMaster.rollDice(riddleList.length);
+			riddle3 = DungeonMaster.rollDice(riddleList.length-1);
 		}
 		// answerFlipper will be used to determine which of the two answers (correct or incorrect) are first
 //		int answerFlipper = DungeonMaster.rollDice(2);
 		
-		System.out.println("You finally reach the bottom of the ladder and enter a medium-sized, square room. In the middle of the room, a huge cauldron is bubbling and boiling with a strange liquid. A sulfurous smell fills the air. A witch is standing next to the cauldron, stirring it with a long wooden spoon. She has a pointy hat, a crooked nose, and a wicked grin. She looks at you and cackles.");
+		System.out.printf(
+				"You finally reach the bottom of the ladder and enter%n"
+				+ "a medium-sized, square room. In the middle of the room, a huge%n"
+				+ "cauldron is bubbling and boiling with a strange liquid.%n"
+				+ "A sulfurous smell fills the air. A witch is standing next to%n"
+				+ "the cauldron, stirring it with a long wooden spoon. She has a%n"
+				+ "pointy hat, a crooked nose, and a wicked grin. She looks at you and cackles.%n");
 		DungeonMaster.pressAnyKey();
 		DungeonMaster.clearConsole();
 		
-		System.out.println("'Welcome, welcome, my dear guest!', she says. 'I've been expecting you. I have prepared a little game for your entertainment! I will ask you three riddles, and you must answer them correctly. If you do, you will be rewarded. If you don't you will be punished. Do you accept the challenge?'");
+		System.out.printf("'Welcome, welcome, my dear guest!', she says.%n"
+				+ "'I've been expecting you. I have prepared a little game for%n"
+				+ "your entertainment! I will ask you three riddles, and you%n"
+				+ "must answer them correctly. If you do, you will be rewarded.%n"
+				+ "If you don't you will be punished. Do you accept the challenge?'%n");
 		
 		System.out.println("You look around the room and see no other way out. You have no choice but to agree.");
 		DungeonMaster.pressAnyKey();
@@ -112,10 +122,17 @@ public class WitchLair extends Scene {
 			
 		switch (riddlesGuessed) {
 		case 0:
-			System.out.println("The witch cackles, 'It seems that games of the mind are not your thing! Perhaps you would rather play with my friend, the shield guardian!'");
+			System.out.printf(
+					"The witch cackles, 'It seems that games of the mind are not your thing!%n"
+					+ "Perhaps you would rather play with my friend, the shield guardian!'%n");
 			DungeonMaster.combat(DungeonMaster.player, monster);
-			if (!DungeonMaster.player.isAlive()) {
-				System.out.println("As the shield guardian clatters to the floor, the witch says 'Very well! You have earned another chance to live. But your journey is not over!' The witch tosses you a healing potion and starts waving her arms wildly and chanting, and your vision flashes all colors of the spectrum as you are whisked away to another part of the dungeon.");
+			if (DungeonMaster.player.isAlive()) {
+				System.out.printf(
+						"As the shield guardian clatters to the floor, the witch says 'Very well!%n"
+						+ "You have earned another chance to live. But your journey is not over!'%n"
+						+ "The witch tosses you a healing potion and starts waving her arms wildly and%n"
+						+ "chanting, and your vision flashes all colors of the spectrum as you are whisked%n"
+						+ "away to another part of the dungeon.%n");
 				DungeonMaster.player.lootHpPot();
 				DungeonMaster.pressAnyKey();
 				DungeonMaster.scene = 1;
@@ -124,24 +141,38 @@ public class WitchLair extends Scene {
 			}
 			break;
 		case 1:
-			System.out.println("The witch laughs, 'Well, at least you tried!' She waves a hand and you suddenly find yourself standing on the side of a mountain overlooking your home town. Well, at least you made it out of the dungeon!");
+			System.out.printf(
+					"The witch laughs, 'Well, at least you tried!' She waves a%n"
+					+ "hand and you suddenly find yourself standing on the side%b"
+					+ "of a mountain overlooking your home town. You weren't%n"
+					+ "able to loot much, but at least you made it out of the dungeon!%n");
 			DungeonMaster.pressAnyKey();
 			DungeonMaster.player.setHasEscaped(true);
 			DungeonMaster.scene = 7;
 			break;
 		case 2:
-			System.out.println("The witch hums, 'So close, but not quite close enough! You will live, but your journey is not quite complete!' She waves her hand and the rooms disappears before you. All goes black before suddenly you are somewhere else.");
+			System.out.printf(
+					"The witch hums, 'So close, but not quite close enough! You%n"
+					+ "will live, but your journey is not quite complete!' She%n"
+					+ "waves her hand and the rooms disappears before you. All%n"
+					+ "goes black before suddenly you are somewhere else.%n");
 			DungeonMaster.pressAnyKey();
 			DungeonMaster.clearConsole();
 			DungeonMaster.scene = 6;
 			break;
 		case 3:
-			System.out.println("'You are brilliant, indeed. You have answered all of my riddles correctly. Your reward is well-earned. Here, take this pouch of gold.");
+			System.out.printf(
+					"'You are brilliant, indeed. You have answered all of my%n"
+					+ "riddles correctly. Your reward is well-earned. Here,%n"
+					+ "take this pouch of gold.%n");
 			DungeonMaster.player.lootGold(50);
-			System.out.println("'And here is the other part of your reward!' She waves a hand and a portal opens up on the wall. You see your home town on the other side. You grab the gold, thank the witch for her kindness, and step through the portal.");
+			System.out.printf("'And here is the other part of your reward!' She%n"
+					+ "waves a hand and a portal opens up on the wall. You see%n"
+					+ "your home town on the other side. You grab the gold,%n"
+					+ "thank the witch for her kindness, and step through the portal.%n");
 			DungeonMaster.pressAnyKey();
 			DungeonMaster.clearConsole();
-			DungeonMaster.scene = 1;
+			DungeonMaster.scene = 7;
 			break;
 		}
 	}
@@ -155,23 +186,23 @@ public class WitchLair extends Scene {
 			System.out.printf("(1) %s%n", answerList[riddle]);
 			System.out.printf("(2) %s%n", fakeAnswerList[riddle]);
 			int input = DungeonMaster.readInt("-->", 2);
-			// Check is correct answer was picked
+			// Check if correct answer was picked
 			if (input==1) {
 				riddlesGuessed++;
-				System.out.println("The witch gasps and frowns.");
+				DungeonMaster.printHeading("The witch gasps and frowns. 'Well done, traveler.'");
 			}else {
-				System.out.println("The witch claps and laughs 'Nice try!'");
+				DungeonMaster.printHeading("The witch claps and laughs 'Nice try!'");
 			}
 		}else {
-			System.out.printf("(2) %s%n", fakeAnswerList[riddle]);
-			System.out.printf("(1) %s%n", answerList[riddle]);
+			System.out.printf("(1) %s%n", fakeAnswerList[riddle]);
+			System.out.printf("(2) %s%n", answerList[riddle]);
 			int input = DungeonMaster.readInt("-->", 2);
 			// Check is correct answer was picked
 			if (input==2) {
 				riddlesGuessed++;
-				System.out.println("The witch nods and smiles.");
+				DungeonMaster.printHeading("The witch nods and smiles.");
 			}else {
-				System.out.println("Incorrect!");
+				DungeonMaster.printHeading("Incorrect!");
 			}
 		}
 		

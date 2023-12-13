@@ -27,7 +27,6 @@ public class GreenRoom extends Scene {
 				+ "these creatures, and how they can engulf and suffocate their prey with%n"
 				+ "their tendrils. The creature has been securely chained to the ground.%n");
 		DungeonMaster.pressAnyKey();
-		DungeonMaster.clearConsole();
 		
 		do {
 			System.out.println(description);

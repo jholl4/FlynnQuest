@@ -61,9 +61,9 @@ public class RedRoom extends Scene {
 					if (loreCheck >= 16) {
 						System.out.printf(
 								"Luckily, you have done your fair share of lore%n"
-								+ " studies through the years. You read the%n inscription, and it says:%n"
+								+ "studies through the years. You read the inscription, and it says:%n%n"
 										+ "THOSE WHO SEEK THE HIDDEN TREASURE MUST FIND THE SECRET LEVER;%n"
-										+ "BEHIND THE WALL OF STONE AND MORTAR LIES A CHEST OF GOLD AND SILVER.%n"
+										+ "BEHIND THE WALL OF STONE AND MORTAR LIES A CHEST OF GOLD AND SILVER.%n%n"
 										+ "You realize that there is a hidden compartment in the wall of%n"
 										+ "this room! You search for the wall that matches the description,%n"
 										+ "and find a loose brick that you are able to push. You hear a click,%n"

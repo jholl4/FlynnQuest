@@ -1,7 +1,5 @@
 package flynnquest.scenes;
 
-import java.util.ArrayList;
-
 import flynnquest.characters.monsters.Monster;
 
 public abstract class Scene {
@@ -10,7 +8,6 @@ public abstract class Scene {
 	private String description; // description of scene, usually about a paragraph
 	private Monster monster; // monster object
 	private int gold; // amount of gold that may be used as a reward
-	private String menu; // TODO figure out what to do with this
 	private int userChoices; // TODO maybe use an array of ints to allow user input here
 	private int userInput;
 	
@@ -18,7 +15,6 @@ public abstract class Scene {
 	public Scene() {
 		this.name = "";
 		this.description = "";
-		this.menu = "";
 		this.monster = null;
 		this.gold = 0;
 	}
@@ -28,7 +24,6 @@ public abstract class Scene {
 		this.description = description;
 		this.monster = monster;
 		this.gold = gold;
-		this.menu = menu;
 		this.userChoices = userChoices;
 	}
 	
@@ -87,20 +82,6 @@ public abstract class Scene {
 	 */
 	public void setGold(int gold) {
 		this.gold = gold;
-	}
-
-	/**
-	 * @return the menu
-	 */
-	public String getMenu() {
-		return menu;
-	}
-
-	/**
-	 * @param menu the menu to set
-	 */
-	public void setMenu(String menu) {
-		this.menu = menu;
 	}
 
 	/**
