@@ -1,13 +1,9 @@
 package flynnquest.scenes;
 
-import flynnquest.characters.monsters.Monster;
 import flynnquest.dungeonmaster.DungeonMaster;
 
 public class RedRoom extends Scene {
 
-	private static String name = "Red Room";
-	private static int sceneId = 6;
-	private static Monster monster = null;
 	private static int gold = DungeonMaster.rollDice(150);
 	private static String description = String.format(
 			"You are in a dimly lit room with a small pedestal in the center.%n"

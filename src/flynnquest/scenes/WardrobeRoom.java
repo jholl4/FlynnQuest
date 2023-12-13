@@ -1,17 +1,14 @@
 package flynnquest.scenes;
 
-import flynnquest.characters.monsters.Monster;
 import flynnquest.dungeonmaster.DungeonMaster;
 
 public class WardrobeRoom extends Scene {
 	
 	// TODO fix wardrobe loop...if you try again after already picking the lock it says you dont have the skill
 
-	private static String name = "Blue Room";
-	private static int sceneId = 2;
-	private static  Monster monster = null;
 	private static int gold = DungeonMaster.rollDice(20);
-	private static String description = String.format("There is an old dusty wardrobe in the corner of the room, and a trapdoor in the floor to the right.%n");
+	private static String description = String.format(
+			"There is an old dusty wardrobe in the corner of the room, and a trapdoor in the floor to the right.%n");
 	private static boolean hasLockBeenTried = false;
 	private static boolean hasLockBeenPicked = false;
 	private static boolean isTrapDoorOpen = false;

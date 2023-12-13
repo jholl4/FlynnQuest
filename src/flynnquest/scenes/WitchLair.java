@@ -6,11 +6,8 @@ import flynnquest.dungeonmaster.DungeonMaster;
 
 public class WitchLair extends Scene {
 
-	private static String name = "Witch's Lair";
-	private static int sceneId = 3;
 	private static  Monster monster = new ShieldGuardian();
 	private static int gold = DungeonMaster.rollDice(75);
-	private static String description = String.format("In the middle of the room, a huge cauldron is bubbling and boiling with a strange liquid. A sulfurous smell fills the air. A witch is standing next to the cauldron, stirring it with a long wooden spoon. She has a pointy hat, a crooked nose, and a wicked grin.%n");
 	private static int riddlesGuessed;
 	
 	private static String[] riddleList = { 
@@ -53,7 +50,7 @@ public class WitchLair extends Scene {
 	};
 	
 	public static void run() {
-		//These ints used to randomize what riddles are pulled from the arrays
+		//These ints used as indexes to randomize what riddles are pulled from the arrays
 		int riddle1 = DungeonMaster.rollDice(riddleList.length)-1;
 		int riddle2 = DungeonMaster.rollDice(riddleList.length)-1;
 		while(riddle2==riddle1) {
@@ -63,8 +60,6 @@ public class WitchLair extends Scene {
 		while (riddle3 == riddle1 || riddle3 == riddle2) {
 			riddle3 = DungeonMaster.rollDice(riddleList.length-1);
 		}
-		// answerFlipper will be used to determine which of the two answers (correct or incorrect) are first
-//		int answerFlipper = DungeonMaster.rollDice(2);
 		
 		System.out.printf(
 				"You finally reach the bottom of the ladder and enter%n"
@@ -88,37 +83,9 @@ public class WitchLair extends Scene {
 		
 		System.out.println("'Very well then. Let us begin! Here is the first riddle:");
 		
-//		System.out.println(riddleList[riddle1]);
-//		System.out.println("What is your answer?");
-//		if (answerFlipper==1) {
-//			System.out.printf("(1) %s%n", answerList[riddle1]);
-//			System.out.printf("(2) %s%n", fakeAnswerList[riddle1]);
-//			int input = DungeonMaster.readInt("-->", 2);
-//			// Check is correct answer was picked
-//			if (input==1) {
-//				riddlesGuessed++;
-//				System.out.println("The witch nods and smiles.");
-//			}else {
-//				System.out.println("Incorrect!");
-//			}
-//		}else {
-//			System.out.printf("(2) %s%n", fakeAnswerList[riddle1]);
-//			System.out.printf("(1) %s%n", answerList[riddle1]);
-//			int input = DungeonMaster.readInt("-->", 2);
-//			// Check is correct answer was picked
-//			if (input==2) {
-//				riddlesGuessed++;
-//				System.out.println("The witch nods and smiles.");
-//			}else {
-//				System.out.println("Incorrect!");
-//			}
-//		}
-		
 		riddleAsk(riddle1);
 		riddleAsk(riddle2);
 		riddleAsk(riddle3);
-		
-		
 			
 		switch (riddlesGuessed) {
 		case 0:
@@ -165,7 +132,7 @@ public class WitchLair extends Scene {
 					"'You are brilliant, indeed. You have answered all of my%n"
 					+ "riddles correctly. Your reward is well-earned. Here,%n"
 					+ "take this pouch of gold.%n");
-			DungeonMaster.player.lootGold(50);
+			DungeonMaster.player.lootGold(gold);
 			System.out.printf("'And here is the other part of your reward!' She%n"
 					+ "waves a hand and a portal opens up on the wall. You see%n"
 					+ "your home town on the other side. You grab the gold,%n"
@@ -176,7 +143,11 @@ public class WitchLair extends Scene {
 			break;
 		}
 	}
-	
+	/**
+	 * Logic for asking each riddle question. answerFlipper is used to ensure that the correct
+	 * answer will not always be in the same position.
+	 * @param riddle
+	 */
 	public static void riddleAsk(int riddle) {
 		int answerFlipper = DungeonMaster.rollDice(2);
 

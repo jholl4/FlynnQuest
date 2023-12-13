@@ -6,17 +6,17 @@ import flynnquest.dungeonmaster.DungeonMaster;
 
 public class RoundRoom extends Scene{
 	
-	private static String name = "Round Room";
-	private static int sceneId = 0;
 	private static  Monster monster = new Ogre();
 	private static int gold = 5;
 	private static boolean isBlueChosen = false;
 	private static boolean isGreenChosen = false;
 	private static boolean isRedChosen = false;
 	private static boolean isDoorOpen = false;
-	private static String description = String.format("In the center of the large round room, there is a small white altar adorned with many candles.%n"
+	private static String description = String.format(
+			"In the center of the large round room, there is a small white altar adorned with many candles.%n"
 			+ "Upon the altar there are three stones, each a different color: red, green, and blue.%n"
-			+ "Behind the altar, on the edge of the room, there are three doors with large crystals matching the stones on the altar.");
+			+ "Behind the altar, on the edge of the room, there are three doors with large crystals%n"
+			+ "matching the stones on the altar.");
 	
 	public static void run() {
 		System.out.println("A large, round room opens up before you.");

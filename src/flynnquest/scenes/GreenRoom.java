@@ -1,13 +1,9 @@
 package flynnquest.scenes;
 
-import flynnquest.characters.monsters.Monster;
 import flynnquest.dungeonmaster.DungeonMaster;
 
 public class GreenRoom extends Scene {
 	
-	private static String name = "Green Room";
-	private static int sceneId = 5;
-	private static  Monster monster = null;
 	private static int gold = DungeonMaster.rollDice(50);
 	private static String description = String.format(
 			"The shambling mound looks weak and withered, as if it has not had%n"

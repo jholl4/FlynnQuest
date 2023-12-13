@@ -99,6 +99,7 @@ public final class DungeonMaster {
 	 */
 	public static void startGame() {
 		boolean isNameSet = false;
+		boolean isVocationSet = false;
 		String name;
 		String vocation = null;
 		isRunning = true;
@@ -126,7 +127,7 @@ public final class DungeonMaster {
 			printHeading("What is your hero's name?");
 			name = scanner.next();
 			// ask if player is sure about the name
-			printHeading("Your name is " + name + ". Is that correct?");
+			printHeading("Your hero's name is " + name + ". Is that correct?");
 			System.out.println("(1) Yes!");
 			System.out.println("(2) No, I've changed my mind.");
 			int input = readInt("-->", 2);
@@ -149,13 +150,14 @@ public final class DungeonMaster {
 			if(input == 3)
 				vocation = "Mage";
 			// ask if player is sure about their vocation
-			printHeading("Your vocation is " + vocation + ". Is that correct?");
+			printHeading("Your hero's vocation is " + vocation + ". Is that correct?");
 			System.out.println("(1) Yes!");
 			System.out.println("(2) No, I've changed my mind.");
 			input = readInt("-->", 2);
 			if(input == 1) {
+				isVocationSet = true;
 			}
-		}while(!isNameSet);
+		}while(!isVocationSet);
 		
 		// create the player object with the name
 		player = new Player(name, vocation);
@@ -290,6 +292,8 @@ public final class DungeonMaster {
 	 */
 	public static int skillCheck(int howManySides, String statName,
 									int statValue) {
+		System.out.printf("Time to make a %s check!%n", statName);
+		pressAnyKey();
 		int result =  player.rollDice();
 		int total = result + statValue;
 		System.out.printf("Adding your %s...%n", statName);

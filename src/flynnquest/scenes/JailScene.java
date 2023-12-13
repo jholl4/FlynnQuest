@@ -1,17 +1,15 @@
 package flynnquest.scenes;
 
-import flynnquest.characters.monsters.Monster;
 import flynnquest.dungeonmaster.DungeonMaster;
 
 public class JailScene extends Scene {
 	
-	private static String name = "Jail";
-	private static  Monster monster = null;
-	private static int gold = 0;
 	private static boolean isDoorOpen = false;
-	private static String description = "It's difficult to tell in the dimly lit dungeon that you"
-			+ " seem to have found yourself in, but it seems that there is nothing "
-			+ "but a dirty pile of straw to sleep on, and the cell is padlocked shut.";
+	private static boolean hasStrawBeenChecked;
+	private static String description = String.format(
+			"It's difficult to tell in the dimly lit dungeon that you%n"
+			+ "seem to have found yourself in, but it seems that there is nothing%n"
+			+ "but a dirty pile of straw to sleep on, and the cell is padlocked shut.%n");
 
 	public static void run() {
 
@@ -27,16 +25,25 @@ public class JailScene extends Scene {
 			int input = DungeonMaster.readInt("-->", 3);
 			switch (input) {
 			case 1:
-				System.out.println("You find a lockpick!");
-				DungeonMaster.player.setHasLockPick(true);
-				if (DungeonMaster.skillCheck(20, "dexterity", DungeonMaster.player.getDex()) >= 15) {
-					System.out.println("You manage to pick the lock and make your way out of the jail area.");
-					isDoorOpen = true;
-					break;
-				} else {
-					System.out.println("Too bad you don't know how to use it...");
-					break;
+				if (!hasStrawBeenChecked) {
+					System.out.println("You find a lockpick!");
+					DungeonMaster.player.setHasLockPick(true);
+					System.out.println("Hopefully you know how to use one of these things...");
+					DungeonMaster.pressAnyKey();
+					if (DungeonMaster.skillCheck(20, "dexterity", DungeonMaster.player.getDex()) >= 15) {
+						System.out.println("You manage to pick the lock and make your way out of the jail area.");
+						isDoorOpen = true;
+						break;
+					} else {
+						System.out.println("Too bad you don't know how to use a lock pick...");
+					}
+				}else {
+					System.out.printf(
+							"You've already checked the straw pile. You found%n"
+							+ "that lock pick, but this lock is too complex for%n"
+							+ "your skill level. Sorry!%n");
 				}
+				break;
 			case 2:
 				System.out.println("You throw all of your strength at the door!");
 				if(DungeonMaster.skillCheck(20, "strength", DungeonMaster.player.getStr()) >= 15) {
