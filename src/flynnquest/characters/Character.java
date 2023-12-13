@@ -6,7 +6,7 @@ public abstract class Character {
 	
 	// properties
 		private String name;
-		private static int maxHp = 100;
+		private int maxHp;
 		private int hp;
 		private boolean isAlive;
 		protected static Random random = new Random();

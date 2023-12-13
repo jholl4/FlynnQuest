@@ -26,6 +26,7 @@ public class JailScene extends Scene {
 			switch (input) {
 			case 1:
 				if (!hasStrawBeenChecked) {
+					hasStrawBeenChecked = true;
 					System.out.println("You find a lockpick!");
 					DungeonMaster.player.setHasLockPick(true);
 					System.out.println("Hopefully you know how to use one of these things...");

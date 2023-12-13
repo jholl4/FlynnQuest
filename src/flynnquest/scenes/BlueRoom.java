@@ -7,6 +7,7 @@ public class BlueRoom extends Scene {
 	private static int gold = DungeonMaster.rollDice(30);
 	private static boolean haveBarrelsBeenLooted = false;
 	private static boolean hasPlayerCrossedWater = false;
+	private static boolean hasSwimmingBeenTried = false;
 	private static String description = String.format(
 			"Directly in front of you is a fast-moving river, and across the%n"
 			+ "river you see a cave opening. Could this be a way out??%n"
@@ -35,14 +36,14 @@ public class BlueRoom extends Scene {
 			case 1:
 				System.out.println("You plunge into the water to find that it is ice cold...");
 				int strCheck1 = DungeonMaster.skillCheck(20, "strength", DungeonMaster.player.getStr());
-				int strCheck2 = DungeonMaster.skillCheck(20, "strength", DungeonMaster.player.getStr());
 				if(strCheck1 >= 12) {
 					System.out.println("As you reach the middle of the river, you realize you can't feel your fingers and your strength is waning.");
 					System.out.println("You're not sure if you can make it to the other side. What do you do?");
-					System.out.println("(1) Turn around");
-					System.out.println("(2) Push through the pain");
+					System.out.println("(1) Push through the pain");
+					System.out.println("(2) Turn around");
 					int swimInput = DungeonMaster.readInt("-->", 2);
 					if(swimInput == 1) {
+						int strCheck2 = DungeonMaster.skillCheck(20, "strength", DungeonMaster.player.getStr());
 						if(strCheck2 >= 15) {
 							System.out.printf("You fight the icy current and win. you find yourself%n"
 									+ " gasping for air on the other side of the river.%n");
@@ -65,6 +66,12 @@ public class BlueRoom extends Scene {
 						System.out.println("You decide to play it safe and turn back the way you came.");
 						break;
 					}
+				}else {
+					System.out.printf(
+							"You instantly regret this decision as soon as the icy water touches your skin.%n"
+							+ "You know that you won't make it all the way across the river so you jump back out.%n"
+							+ "Maybe there's a better option...%n");
+					hasSwimmingBeenTried = true;
 				}
 			case 2:
 				System.out.println("You push the boat into the water and hop in, frantically paddling to the other side.");
@@ -124,10 +131,12 @@ public class BlueRoom extends Scene {
 						break;
 					}
 					System.out.println("It's all worthless junk!");
+					DungeonMaster.pressAnyKey();
 					haveBarrelsBeenLooted = true;
 				}else {
 					System.out.println(
 							"You've already checked the barrels...it doesn't look like you'll find anything else.");
+					DungeonMaster.pressAnyKey();
 				}
 				break;
 			}

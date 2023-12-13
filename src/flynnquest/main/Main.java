@@ -8,8 +8,6 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		
-		// TODO see about adding music
 		do {
 			DungeonMaster.startGame();
 			DungeonMaster.gameLoop();
