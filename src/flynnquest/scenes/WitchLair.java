@@ -50,7 +50,7 @@ public class WitchLair extends Scene {
 	};
 	
 	public static void run() {
-		//These ints used as indexes to randomize what riddles are pulled from the arrays
+		//These variables used as indexes to randomize what riddles are pulled from the arrays
 		int riddle1 = DungeonMaster.rollDice(riddleList.length)-1;
 		int riddle2 = DungeonMaster.rollDice(riddleList.length)-1;
 		while(riddle2==riddle1) {
@@ -75,7 +75,7 @@ public class WitchLair extends Scene {
 				+ "'I've been expecting you. I have prepared a little game for%n"
 				+ "your entertainment! I will ask you three riddles, and you%n"
 				+ "must answer them correctly. If you do, you will be rewarded.%n"
-				+ "If you don't you will be punished. Do you accept the challenge?'%n");
+				+ "If you don't you will be punished. Do you accept the challenge?'%n%n");
 		
 		System.out.println("You look around the room and see no other way out. You have no choice but to agree.");
 		DungeonMaster.pressAnyKey();
@@ -168,7 +168,7 @@ public class WitchLair extends Scene {
 			System.out.printf("(1) %s%n", fakeAnswerList[riddle]);
 			System.out.printf("(2) %s%n", answerList[riddle]);
 			int input = DungeonMaster.readInt("-->", 2);
-			// Check is correct answer was picked
+			// Check if correct answer was picked
 			if (input==2) {
 				riddlesGuessed++;
 				DungeonMaster.printHeading("The witch nods and smiles.");

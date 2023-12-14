@@ -17,11 +17,20 @@ import flynnquest.scenes.WitchLair;
 
 public final class DungeonMaster {
 	
+	/*
+	 * This class houses the major game logic for Flynn Quest.
+	 * I named it Dungeon Master to reflect how, in pen and paper role playing 
+	 * games, the dungeon master has full control of the game's flow.
+	 * 
+	 * If I had time, I would implement a GUI and add music.
+	 * I would also add ASCII art to each scene to make them a little more visually appealing.
+	 * 
+	 * I would also further refine the skill check system in this class.
+	 */
+	
 	public static Scanner scanner = new Scanner(System.in);
 	public static Random random = new Random();
-	
 	public static Player player;
-	
 	public static boolean isRunning;
 	
 	// Story elements---scene is used in continueAdventure() to determine the
@@ -296,9 +305,8 @@ public final class DungeonMaster {
 		pressAnyKey();
 		int result =  player.rollDice();
 		int total = result + statValue;
-		System.out.printf("Adding your %s...%n", statName);
-		System.out.printf("You rolled %d; combined with your %d %s you got a"
-				+ " %d!%n%n", result, statValue, statName, total);
+		System.out.printf("Combined with your %d %s you got a"
+				+ " %d!%n%n", statValue, statName, total);
 		return total;
 	}
 	

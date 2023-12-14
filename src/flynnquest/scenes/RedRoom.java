@@ -5,13 +5,15 @@ import flynnquest.dungeonmaster.DungeonMaster;
 public class RedRoom extends Scene {
 
 	private static int gold = DungeonMaster.rollDice(150);
+	private static int fingerChopperDamage = 10;
+	private static int loreChallenge = 16;
 	private static String description = String.format(
 			"You are in a dimly lit room with a small pedestal in the center.%n"
 			+ "On top of the pedestal, there is a bowl covered in dark stains%n"
 			+ "that you can only assume are dried blood. Above the bowl, there%n"
 			+ "is a stone slab with a hole in it, large enough for a finger.%n"
-			+ "You see an inscription on the slab, written in plain English:%n"
-					+ "ONLY THOSE WHO PAY THE PRICE OF PASSAGE MAY PROCEED. INSERT YOUR FINGER TO PAY THE PRICE.%n"
+			+ "You see an inscription on the slab, written in plain English:%n%n"
+					+ "ONLY THOSE WHO PAY THE PRICE OF PASSAGE MAY PROCEED. INSERT YOUR FINGER TO PAY THE PRICE.%n%n"
 					+ "You shudder at the thought of losing a finger, but you%n"
 					+ "wonder if there is any other way out of this room. You%n"
 					+ "look around and see a door on the opposite wall, but it%n"
@@ -24,6 +26,7 @@ public class RedRoom extends Scene {
 
 		do {
 			System.out.println(description);
+			DungeonMaster.pressAnyKey();
 			System.out.println("What will you do?");
 			System.out.println("(1) Insert your finger into the hole");
 			System.out.println("(2) Look for another option");
@@ -34,27 +37,29 @@ public class RedRoom extends Scene {
 						"As much as you hate the idea of losing a finger, it's%n"
 						+ "better than being trapped in this dungeon. You%n"
 						+ "insert your least favorite finger into the hole,%n"
-						+ "and a large CHOP removes your finger. You recoil in%n"
+						+ "and a large CHOP removes your finger! You recoil in%n"
 						+ "pain as your blood is added to the bowl, and the%n"
 						+ "door on the opposite side of the room grinds open.%n");
-				DungeonMaster.player.damage(10);
+				DungeonMaster.player.damage(fingerChopperDamage);
 				DungeonMaster.pressAnyKey();
 				isRoomResolved = true;
 				DungeonMaster.player.setHasEscaped(true);
 				break;
 			case 2:
-				System.out.printf(
-						"You decide to look for another solution, hoping to%n"
-						+ "avoid the gruesome fate of losing a finger. You%n"
-						+ "examine the pedestal more closely, and notice a%n"
-						+ "faint inscription at the base. It seems to be%n"
-						+ "written in an ancient and forgotten language,%n"
-						+ "that only a few scholars can decipher.%n");
 				if (!hasTriedToDecipher) {
+					hasTriedToDecipher = true;
+					System.out.printf(
+							"You decide to look for another solution, hoping to%n"
+									+ "avoid the gruesome fate of losing a finger. You%n"
+									+ "examine the pedestal more closely, and notice a%n"
+									+ "faint inscription at the base. It seems to be%n"
+									+ "written in an ancient and forgotten language,%n"
+									+ "that only a few scholars can decipher.%n");
+					DungeonMaster.pressAnyKey();
 					int loreCheck = DungeonMaster.skillCheck(20, "magic",
 												DungeonMaster.player.getMag());
 
-					if (loreCheck >= 16) {
+					if (loreCheck >= loreChallenge) {
 						System.out.printf(
 								"Luckily, you have done your fair share of lore%n"
 								+ "studies through the years. You read the inscription, and it says:%n%n"
@@ -76,7 +81,6 @@ public class RedRoom extends Scene {
 						System.out.println(
 								"Unfortunately you are unable to read the text. Perhaps you should have paid more attention in ancient lore studies...");
 						DungeonMaster.pressAnyKey();
-						hasTriedToDecipher = true;
 						break;
 					}
 				} else {

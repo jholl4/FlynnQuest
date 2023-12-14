@@ -4,15 +4,13 @@ import flynnquest.dungeonmaster.DungeonMaster;
 
 public class WardrobeRoom extends Scene {
 	
-	// TODO fix wardrobe loop...if you try again after already picking the lock it says you dont have the skill
-
 	private static int gold = DungeonMaster.rollDice(20);
-	private static String description = String.format(
-			"There is an old dusty wardrobe in the corner of the room, and a trapdoor in the floor to the right.%n");
 	private static boolean hasLockBeenTried = false;
 	private static boolean hasLockBeenPicked = false;
 	private static boolean isTrapDoorOpen = false;
-	
+	private static int wardrobeLockDifficulty = 15;
+	private static String description = String.format(
+			"There is an old dusty wardrobe in the corner of the room, and a trapdoor in the floor to the right.%n");
 	
 	public static void run() {
 		System.out.println("You manage to squeeze your way to the other side of the crevice without getting stuck...");
@@ -39,7 +37,7 @@ public class WardrobeRoom extends Scene {
 				}else {
 					if (!hasLockBeenTried) {
 						int dexCheck = DungeonMaster.skillCheck(20, "dexterity", DungeonMaster.player.getDex());
-						if(dexCheck >= 15){
+						if(dexCheck >= wardrobeLockDifficulty){
 							System.out.println(
 									"Eureka! You pick the lock and find a small pile of gold and a healing potion!");
 							DungeonMaster.player.lootGold(gold);

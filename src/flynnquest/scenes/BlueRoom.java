@@ -8,18 +8,23 @@ public class BlueRoom extends Scene {
 	private static boolean haveBarrelsBeenLooted = false;
 	private static boolean hasPlayerCrossedWater = false;
 	private static boolean hasSwimmingBeenTried = false;
+	private static int swimChallenge1 = 12;
+	private static int swimChallenge2 = 15;
+	private static int swim1Damage = 5;
+	private static int turnAroundDamage = 15;
 	private static String description = String.format(
 			"Directly in front of you is a fast-moving river, and across the%n"
-			+ "river you see a cave opening. Could this be a way out??%n"
-			+ "To your left, there is a pile of old barrels and crates.%n"
-			+ "To your right, there is an old decrepit-looking rowboat.%n"
-			+ "It's hard to tell if it is seaworthy or not...%n");
+					+ "river you see a cave opening.%n"
+					+ "To your left, there is a pile of old barrels and crates.%n"
+					+ "To your right, there is an old decrepit-looking rowboat.%n"
+					+ "It's hard to tell if it is seaworthy or not...%n");
 	
 	public static void run() {
 		System.out.printf(
 				"Thankful for clearing the previous room, you push through a narrow cave.%n"
 				+ "Eventually you hear the sound of rushing water.%n"
 				+ "Its volume increases until the cave finally widens and you see your next obstacle...%n");
+		DungeonMaster.pressAnyKey();
 		
 		do {
 			System.out.println(description);
@@ -34,17 +39,21 @@ public class BlueRoom extends Scene {
 			
 			switch(input) {
 			case 1:
+				hasSwimmingBeenTried = true;
 				System.out.println("You plunge into the water to find that it is ice cold...");
 				int strCheck1 = DungeonMaster.skillCheck(20, "strength", DungeonMaster.player.getStr());
-				if(strCheck1 >= 12) {
-					System.out.println("As you reach the middle of the river, you realize you can't feel your fingers and your strength is waning.");
+				if(strCheck1 >= swimChallenge1) {
+					System.out.printf(
+							"As you reach the middle of the river, you realize you can't feel your fingers,%n"
+							+ "and your strength is waning.%n");
 					System.out.println("You're not sure if you can make it to the other side. What do you do?");
 					System.out.println("(1) Push through the pain");
 					System.out.println("(2) Turn around");
 					int swimInput = DungeonMaster.readInt("-->", 2);
-					if(swimInput == 1) {
+					switch (swimInput) {
+					case 1:
 						int strCheck2 = DungeonMaster.skillCheck(20, "strength", DungeonMaster.player.getStr());
-						if(strCheck2 >= 15) {
+						if(strCheck2 >= swimChallenge2) {
 							System.out.printf("You fight the icy current and win. you find yourself%n"
 									+ " gasping for air on the other side of the river.%n");
 							System.out.printf(
@@ -60,19 +69,26 @@ public class BlueRoom extends Scene {
 							DungeonMaster.pressAnyKey();
 							DungeonMaster.player.setAlive(false);
 							hasPlayerCrossedWater = true;
+							break;
 						}
-						
-					}else if(swimInput == 2) {
-						System.out.println("You decide to play it safe and turn back the way you came.");
+					case 2: 
+						System.out.printf(
+								"You decide to play it safe and turn back the way you came. By the time you make it back to the shore,%n"
+								+ "you can barely feel your arms and legs.");
+						DungeonMaster.player.damage(turnAroundDamage);
+						DungeonMaster.pressAnyKey();;
 						break;
 					}
+					
 				}else {
 					System.out.printf(
 							"You instantly regret this decision as soon as the icy water touches your skin.%n"
 							+ "You know that you won't make it all the way across the river so you jump back out.%n"
 							+ "Maybe there's a better option...%n");
-					hasSwimmingBeenTried = true;
+					DungeonMaster.player.damage(swim1Damage);
+					DungeonMaster.pressAnyKey();
 				}
+				break;
 			case 2:
 				System.out.println("You push the boat into the water and hop in, frantically paddling to the other side.");
 				int boatCheck = DungeonMaster.rollDice(20);

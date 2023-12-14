@@ -8,6 +8,7 @@ public class Player extends Character {
 	private String vocation;
 	private boolean hasEscaped; // should start as false
 	private int hpPotCount; // number of hp potions held
+	private int hpPotCarryLimit;
 	private boolean hasLockPick;
 	private int gold;
 
@@ -22,6 +23,7 @@ public class Player extends Character {
 		this.vocation = vocation;
 		this.hasEscaped = false;
 		this.hasLockPick = false;
+		this.hpPotCarryLimit = 3;
 		if (vocation.equalsIgnoreCase("warrior")) {
 			setStr(8);
 			setDex(5);
@@ -39,10 +41,24 @@ public class Player extends Character {
 		}
 	}
 
-	// getters/setters
-	
-	
+	/**
+	 * @return the hpPotCarryLimit
+	 */
+	public int getHpPotCarryLimit() {
+		return hpPotCarryLimit;
+	}
 
+	/**
+	 * @param hpPotCarryLimit the hpPotCarryLimit to set
+	 */
+	public void setHpPotCarryLimit(int hpPotCarryLimit) {
+		this.hpPotCarryLimit = hpPotCarryLimit;
+	}
+	
+	/**
+	 * 
+	 * @return hero's vocation
+	 */
 	public String getVocation() {
 		return vocation;
 	}
@@ -84,31 +100,45 @@ public class Player extends Character {
 		return gold;
 	}
 
-	public void setGold(int gold) {
-		this.gold = gold;
-	}
+//	public void setGold(int gold) {
+//		this.gold = gold;
+//	}
 	
+	/**
+	 * Will add to the player's carried gold. Usually from the scene's gold property.
+	 * @param rewardAmount
+	 */
 	public void lootGold(int rewardAmount) {
 		gold = gold + rewardAmount;
 		DungeonMaster.printHeading(String.format("You gained %d gold!", rewardAmount));
 	}
 	
+	/**
+	 * Add to the player's healing potion count as long as it is not over the limit.
+	 */
 	public void lootHpPot() {
-		if (hpPotCount <= 3) {
+		if (hpPotCount < hpPotCarryLimit) {
 			hpPotCount++;
 		}
 	}
-	
+	/**
+	 * Check the player's health potion (hp pot) count; if they are carrying a potion
+	 * the count will be reduced and the player's heal method will be called.
+	 */
 	public void drinkHpPot() {
+		int potionHealAmount = 5;
 		if (hpPotCount < 0) {
 			System.out.println("Drinking an Hp potion...you are being healed!");
-			heal(5);
+			heal(potionHealAmount);
 			hpPotCount--;
 			System.out.printf("You now have %d Hp!%n", getHp());
 			DungeonMaster.pressAnyKey();
 		}
 	}
 
+	/**
+	 * Use the toString method to print the overall status of the player and what they are carrying..
+	 */
 	public String toString() {
 		DungeonMaster.printHeading("CHARACTER STATUS");
 		return String.format(
@@ -139,15 +169,5 @@ public class Player extends Character {
 	public int defend() {
 		return attack();
 	}
-
-//	@Override
-//	/**
-//	 * Gives a random number based on the number of sides assigned to howManySides...used for attack/defend and skill checks
-//	 */
-//	public int rollDice() {
-//		int howManySides = 20;
-//		int result = random.nextInt(howManySides);
-//		return result;
-//	}
 
 }

@@ -8,8 +8,6 @@ public abstract class Scene {
 	private String description; // description of scene, usually about a paragraph
 	private Monster monster; // monster object
 	private int gold; // amount of gold that may be used as a reward
-//	private int userChoices; // TODO maybe use an array of ints to allow user input here
-//	private int userInput;
 	
 	public Scene() {
 		this.name = "";
@@ -23,7 +21,6 @@ public abstract class Scene {
 		this.description = description;
 		this.monster = monster;
 		this.gold = gold;
-//		this.userChoices = userChoices;
 	}
 	
 
@@ -82,33 +79,5 @@ public abstract class Scene {
 	public void setGold(int gold) {
 		this.gold = gold;
 	}
-
-//	/**
-//	 * @return the userChoices
-//	 */
-//	public int getUserChoices() {
-//		return userChoices;
-//	}
-//
-//	/**
-//	 * @param userChoices the userChoices to set
-//	 */
-//	public void setUserChoices(int userChoices) {
-//		this.userChoices = userChoices;
-//	}
-//	
-//	/**
-//	 * @return the userInput
-//	 */
-//	public int getUserInput() {
-//		return userInput;
-//	}
-//
-//	/**
-//	 * @param userInput the userInput to set
-//	 */
-//	public void setUserInput(int userInput) {
-//		this.userInput = userInput;
-//	}
 
 }

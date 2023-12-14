@@ -42,8 +42,6 @@ public abstract class Character {
 		this.isAlive = true;
 	}
 	
-	// getters/setters
-	
 	/**
 	 * 
 	 * @return character's Hp

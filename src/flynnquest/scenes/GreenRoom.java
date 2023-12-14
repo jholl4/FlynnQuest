@@ -5,13 +5,13 @@ import flynnquest.dungeonmaster.DungeonMaster;
 public class GreenRoom extends Scene {
 	
 	private static int gold = DungeonMaster.rollDice(50);
+	private static boolean isRoomResolved = false;
 	private static String description = String.format(
 			"The shambling mound looks weak and withered, as if it has not had%n"
 			+ "sustenance for a long time. You notice a small pool of water in%n"
 			+ "the corner of the room, but the creature is unable to reach it.%n"
 			+ "You wonder why it is trapped here, and who it crossed to earn%n"
 			+ "this punishment.%n");
-	private static boolean isRoomResolved = false;
 
 	public static void run() {
 		System.out.printf("You enter a dark and damp room, illuminated by only a%n"
