@@ -101,10 +101,6 @@ public class Player extends Character {
 	public int getGold() {
 		return gold;
 	}
-
-//	public void setGold(int gold) {
-//		this.gold = gold;
-//	}
 	
 	/**
 	 * Will add to the player's carried gold. Usually from the scene's gold property.

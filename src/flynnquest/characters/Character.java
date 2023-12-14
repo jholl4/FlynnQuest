@@ -4,7 +4,6 @@ import java.util.Random;
 
 public abstract class Character {
 	
-	// properties
 		private String name;
 		private int maxHp; // maximum health points
 		private int hp; // health points
@@ -13,8 +12,6 @@ public abstract class Character {
 		private int str; // strength
 		private int mag; // magic
 		private int dex; // dexterity
-		
-	// constructors
 		
 	public Character() {
 		this.name = "Unknown";

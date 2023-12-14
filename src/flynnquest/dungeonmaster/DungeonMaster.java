@@ -287,7 +287,6 @@ public final class DungeonMaster {
 				+ "  \\       |       /  \r\n"
 				+ "   `-.._  |  _,,-'   \r\n"
 				+ "        ``\"''        ");
-//		System.out.println("rolled " + result);
 		return result;
 	}
 	
