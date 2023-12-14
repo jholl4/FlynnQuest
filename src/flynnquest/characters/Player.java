@@ -3,16 +3,18 @@ package flynnquest.characters;
 import flynnquest.dungeonmaster.DungeonMaster;
 
 public class Player extends Character {
+	
+	/*
+	 * If I had the time, I would add an experience point property to the player class,
+	 * and the experience total would affect the player's final score.
+	 */
 
-	// properties
 	private String vocation;
 	private boolean hasEscaped; // should start as false
 	private int hpPotCount; // number of hp potions held
 	private int hpPotCarryLimit;
 	private boolean hasLockPick;
 	private int gold;
-
-	// constructors
 
 	public Player() {
 		super("Unknown Hero", 100);

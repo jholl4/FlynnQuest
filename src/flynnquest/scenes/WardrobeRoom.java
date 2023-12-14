@@ -15,7 +15,7 @@ public class WardrobeRoom extends Scene {
 	public static void run() {
 		System.out.println("You manage to squeeze your way to the other side of the crevice without getting stuck...");
 		System.out.printf("You find yourself in a sort of dressing room, with a%n"
-				+ "large, elegant carpet covering almost the entire stone floor.%n"
+				+ "large, elegant carpet covering almost the entire stone floor.%n%n"
 				+ "Numerous other carpets are scattered across the room, some rolled%n"
 				+ "neatly while others were carelessly thrown into the room.%n");
 		

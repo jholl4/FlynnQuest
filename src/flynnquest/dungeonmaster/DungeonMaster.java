@@ -26,6 +26,7 @@ public final class DungeonMaster {
 	 * I would also add ASCII art to each scene to make them a little more visually appealing.
 	 * 
 	 * I would also further refine the skill check system in this class.
+	 * I might make character creation into a scene too.
 	 */
 	
 	public static Scanner scanner = new Scanner(System.in);
@@ -38,7 +39,7 @@ public final class DungeonMaster {
 	public static int scene = 0;
 	public static String[] scenes = { "Jail", "Round Room", "Wardrobe Room",
 									"Witch's Lair", "Blue Room", "Green Room",
-									"Red Room", "Game Over" };
+									"Red Room", "Game End" };
 
 	/**
 	 * Method to get user input

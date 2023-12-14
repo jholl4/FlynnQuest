@@ -32,7 +32,7 @@ public class JailScene extends Scene {
 					System.out.println("Hopefully you know how to use one of these things...");
 					DungeonMaster.pressAnyKey();
 					if (DungeonMaster.skillCheck(20, "dexterity", DungeonMaster.player.getDex()) >= 15) {
-						System.out.println("You manage to pick the lock and make your way out of the jail area.");
+						System.out.println("You manage to pick the lock and make your way out of the jail.");
 						isDoorOpen = true;
 						break;
 					} else {
@@ -70,9 +70,11 @@ public class JailScene extends Scene {
 			DungeonMaster.pressAnyKey();
 			DungeonMaster.clearConsole();
 		}while(!isDoorOpen);
-		System.out.println("As you leave the jail cells behind you, there are two hallways ahead. Which way do you go?");
-		System.out.println("(1) Left");
-		System.out.println("(2) Right");
+		System.out.printf(
+				"As you leave the jail cells behind you, there is a hallway out, but out of the corner of you eye,%n"
+				+ "you spot a gap in the corner of the wall to your right. Which way do you go?%n");
+		System.out.println("(1) Take the hallway to the left");
+		System.out.println("(2) Attempt to squeeze through the crevice to the right");
 		int input = DungeonMaster.readInt("-->", 2);
 		if(!DungeonMaster.player.isAlive()) {
 			DungeonMaster.scene = 7;

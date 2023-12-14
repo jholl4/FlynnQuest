@@ -64,7 +64,7 @@ public class WitchLair extends Scene {
 		System.out.printf(
 				"You finally reach the bottom of the ladder and enter%n"
 				+ "a medium-sized, square room. In the middle of the room, a huge%n"
-				+ "cauldron is bubbling and boiling with a strange liquid.%n"
+				+ "cauldron is bubbling and boiling with a strange liquid.%n%n"
 				+ "A sulfurous smell fills the air. A witch is standing next to%n"
 				+ "the cauldron, stirring it with a long wooden spoon. She has a%n"
 				+ "pointy hat, a crooked nose, and a wicked grin. She looks at you and cackles.%n");
@@ -122,7 +122,7 @@ public class WitchLair extends Scene {
 					"The witch hums, 'So close, but not quite close enough! You%n"
 					+ "will live, but your journey is not quite complete!' She%n"
 					+ "waves her hand and the rooms disappears before you. All%n"
-					+ "goes black before suddenly you are somewhere else.%n");
+					+ "goes black, then suddenly, you are somewhere else.%n");
 			DungeonMaster.pressAnyKey();
 			DungeonMaster.clearConsole();
 			DungeonMaster.scene = 6;

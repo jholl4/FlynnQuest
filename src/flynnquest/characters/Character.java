@@ -6,13 +6,13 @@ public abstract class Character {
 	
 	// properties
 		private String name;
-		private int maxHp;
-		private int hp;
+		private int maxHp; // maximum health points
+		private int hp; // health points
 		private boolean isAlive;
 		protected static Random random = new Random();
-		private int str;
-		private int mag;
-		private int dex;
+		private int str; // strength
+		private int mag; // magic
+		private int dex; // dexterity
 		
 	// constructors
 		
