@@ -83,7 +83,7 @@ public final class DungeonMaster {
 	}
 
 	/**
-	 * Prints a heading(param title) with separators above and below.
+	 * Prints a heading from parameter title with separators above and below.
 	 * 
 	 * @param title
 	 */
@@ -104,7 +104,7 @@ public final class DungeonMaster {
 	}
 
 	/**
-	 * Shows a splash intro screen and then prompts the player to create their
+	 * Shows a splash introduction screen and then prompts the player to create their
 	 * character
 	 */
 	public static void startGame() {
