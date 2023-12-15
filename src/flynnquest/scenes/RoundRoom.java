@@ -23,6 +23,10 @@ public class RoundRoom extends Scene{
 			+ "matching the stones on the altar.");
 	
 	public static void run() {
+		isBlueChosen = false;
+		isGreenChosen = false;
+		isRedChosen = false;
+		isDoorOpen = false;
 		System.out.println("A large, round room opens up before you.");
 		
 		if(!isBlueChosen && !isGreenChosen && !isRedChosen) {

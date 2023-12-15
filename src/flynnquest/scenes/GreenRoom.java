@@ -14,6 +14,7 @@ public class GreenRoom extends Scene {
 			+ "this punishment.%n");
 
 	public static void run() {
+		isRoomResolved = false;
 		System.out.printf("You enter a dark and damp room, illuminated by only a%n"
 				+ "few flickering torches and the door slams shut behind you with%n"
 				+ "a loud *thud*. The air is heavy with the smell of rot and decay.%n"

@@ -22,6 +22,8 @@ public class RedRoom extends Scene {
 	private static boolean hasTriedToDecipher = false;
 
 	public static void run() {
+		isRoomResolved = false;
+		hasTriedToDecipher = false;
 		System.out.println("As you enter the room, the door slams behind you.");
 
 		do {

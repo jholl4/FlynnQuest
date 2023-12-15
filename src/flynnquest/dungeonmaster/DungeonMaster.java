@@ -113,7 +113,7 @@ public final class DungeonMaster {
 		String name;
 		String vocation = null;
 		isRunning = true;
-		Main.isRunning = true;
+//		Main.isRunning = true;
 		// print title screen
 		clearConsole();
 		printSeparator(120);
@@ -174,9 +174,10 @@ public final class DungeonMaster {
 		checkHeroStats();
 		
 		// show first story scene
-		JailScene.run();
+//		JailScene.run();
+		DungeonMaster.scene = 0;
 		
-		isRunning = true;
+//		isRunning = true;
 	}
 	
 	/**
@@ -209,6 +210,9 @@ public final class DungeonMaster {
 			break;
 		case 7:
 			GameEnd.run();
+			if (DungeonMaster.scene == 0) {
+				startGame();
+			}
 			break;
 		}
 	}

@@ -19,6 +19,8 @@ public class BlueRoom extends Scene {
 					+ "It's hard to tell if it is seaworthy or not...%n");
 	
 	public static void run() {
+		haveBarrelsBeenLooted = false;
+		hasPlayerCrossedWater = false;
 		System.out.printf(
 				"Thankful for clearing the previous room, you push through a narrow cave.%n"
 				+ "Eventually you hear the sound of rushing water.%n"

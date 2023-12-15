@@ -13,6 +13,9 @@ public class WardrobeRoom extends Scene {
 			"There is an old dusty wardrobe in the corner of the room, and a trapdoor in the floor to the right.%n");
 	
 	public static void run() {
+		hasLockBeenTried = false;
+		hasLockBeenPicked = false;
+		isTrapDoorOpen = false;
 		System.out.println("You manage to squeeze your way to the other side of the crevice without getting stuck...");
 		System.out.printf("You find yourself in a sort of dressing room, with a%n"
 				+ "large, elegant carpet covering almost the entire stone floor.%n%n"

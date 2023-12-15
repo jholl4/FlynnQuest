@@ -41,7 +41,7 @@ public class GameEnd extends Scene{
 					+ "and you were able to amass a fortune of %d gold along the way!%n", DungeonMaster.player.getHp(), DungeonMaster.player.getGold());
 			}
 		System.out.println();
-		System.out.printf("Your total score based on your health and everything you looted is %d%n", playerScore);
+		System.out.printf("Your total score based on your health and everything you looted is %d!%n", playerScore);
 		System.out.println();
 		System.out.println("Thank you very much for playing!");
 		System.out.println("Special thanks to my awesome son Flynn for his major contributions to the dungeon layout and story!");
@@ -53,6 +53,7 @@ public class GameEnd extends Scene{
 		switch(input) {
 		case 1:
 			DungeonMaster.isRunning = false;
+			DungeonMaster.scene = 0;
 			break;
 		case 2:
 			DungeonMaster.isRunning = false;

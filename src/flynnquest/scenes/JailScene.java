@@ -16,6 +16,9 @@ public class JailScene extends Scene {
 			+ "but a dirty pile of straw to sleep on, and the cell is padlocked shut.%n");
 
 	public static void run() {
+		
+		isDoorOpen = false;
+		hasStrawBeenChecked = false;
 
 		System.out.println("You awaken to discover yourself in a jail cell.");
 		System.out.println("You survey the cell to get an idea of your situation.");
@@ -56,7 +59,7 @@ public class JailScene extends Scene {
 					isDoorOpen = true;
 					break;
 				}else {
-					System.out.printf("Your frail body makes a strange cracking sound as it impacts the door...lose %d hp.", doorFailDamage);
+					System.out.printf("Your frail body makes a strange cracking sound as it impacts the door...lose %d hp.%n", doorFailDamage);
 					DungeonMaster.player.damage(5);
 					break;
 				}

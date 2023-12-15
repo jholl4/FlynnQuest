@@ -52,6 +52,7 @@ public class WitchLair extends Scene {
 	public static void run() {
 		// These variables used as indexes to randomize what riddles are pulled from the arrays
 		// and ensure that the same riddles aren't pulled multiple times in one play-through
+		riddlesGuessed = 0;
 		int riddle1 = DungeonMaster.rollDice(riddleList.length)-1;
 		int riddle2 = DungeonMaster.rollDice(riddleList.length)-1;
 		while(riddle2==riddle1) {
