@@ -6,6 +6,10 @@ public class JailScene extends Scene {
 	
 	private static boolean isDoorOpen = false;
 	private static boolean hasStrawBeenChecked;
+	private static int doorStrChallengeLevel = 15;
+	private static int doorDexChallengeLevel = 15;
+	private static int doorMagChallengeLevel = 15;
+	private static int doorFailDamage = 5;
 	private static String description = String.format(
 			"It's difficult to tell in the dimly lit dungeon that you%n"
 			+ "seem to have found yourself in, but it seems that there is nothing%n"
@@ -31,7 +35,7 @@ public class JailScene extends Scene {
 					DungeonMaster.player.setHasLockPick(true);
 					System.out.println("Hopefully you know how to use one of these things...");
 					DungeonMaster.pressAnyKey();
-					if (DungeonMaster.skillCheck(20, "dexterity", DungeonMaster.player.getDex()) >= 15) {
+					if (DungeonMaster.skillCheck(20, "dexterity", DungeonMaster.player.getDex()) >= doorDexChallengeLevel) {
 						System.out.println("You manage to pick the lock and make your way out of the jail.");
 						isDoorOpen = true;
 						break;
@@ -47,18 +51,18 @@ public class JailScene extends Scene {
 				break;
 			case 2:
 				System.out.println("You throw all of your strength at the door!");
-				if(DungeonMaster.skillCheck(20, "strength", DungeonMaster.player.getStr()) >= 15) {
+				if(DungeonMaster.skillCheck(20, "strength", DungeonMaster.player.getStr()) >= doorStrChallengeLevel) {
 					System.out.println("After a few bashes to the cell's door, it gives way and you exit the cell.");
 					isDoorOpen = true;
 					break;
 				}else {
-					System.out.println("Your frail body makes a strange cracking sound as it impacts the door...lose 10 hp.");
+					System.out.printf("Your frail body makes a strange cracking sound as it impacts the door...lose %d hp.", doorFailDamage);
 					DungeonMaster.player.damage(5);
 					break;
 				}
 			case 3:
 				System.out.println("You sense a power deep inside you and call to it.");
-				if(DungeonMaster.skillCheck(20, "magic", DungeonMaster.player.getMag()) >= 15) {
+				if(DungeonMaster.skillCheck(20, "magic", DungeonMaster.player.getMag()) >= doorMagChallengeLevel) {
 					System.out.println("Intense cold air suddenly flows from your fingertips into the lock. You tap on the lock and it shatters!");
 					isDoorOpen = true;
 					break;
