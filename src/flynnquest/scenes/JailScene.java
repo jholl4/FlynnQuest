@@ -59,14 +59,16 @@ public class JailScene extends Scene {
 					isDoorOpen = true;
 					break;
 				}else {
-					System.out.printf("Your frail body makes a strange cracking sound as it impacts the door...lose %d hp.%n", doorFailDamage);
+					System.out.printf(
+							"Your frail body makes a strange cracking sound as it impacts the door...lose %d hp.%n", doorFailDamage);
 					DungeonMaster.player.damage(5);
 					break;
 				}
 			case 3:
 				System.out.println("You sense a power deep inside you and call to it.");
 				if(DungeonMaster.skillCheck(20, "magic", DungeonMaster.player.getMag()) >= doorMagChallengeLevel) {
-					System.out.println("Intense cold air suddenly flows from your fingertips into the lock. You tap on the lock and it shatters!");
+					System.out.println(
+							"Intense cold air suddenly flows from your fingertips into the lock. You tap on the lock and it shatters!");
 					isDoorOpen = true;
 					break;
 				}else {

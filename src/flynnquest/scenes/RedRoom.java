@@ -80,8 +80,9 @@ public class RedRoom extends Scene {
 						isRoomResolved = true;
 						break;
 					} else {
-						System.out.println(
-								"Unfortunately you are unable to read the text. Perhaps you should have paid more attention in ancient lore studies...");
+						System.out.printf(
+								"Unfortunately you are unable to read the text.%n"
+								+ "Perhaps you should have paid more attention in ancient lore studies...%n");
 						DungeonMaster.pressAnyKey();
 						break;
 					}
