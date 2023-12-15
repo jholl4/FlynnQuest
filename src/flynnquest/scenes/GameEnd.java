@@ -57,7 +57,6 @@ public class GameEnd extends Scene{
 		case 2:
 			DungeonMaster.isRunning = false;
 			Main.isRunning = false;
-			System.out.println("Enjoy the real world!");
 			}
 		
 	}

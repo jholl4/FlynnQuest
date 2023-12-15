@@ -36,7 +36,7 @@ public class JailScene extends Scene {
 						isDoorOpen = true;
 						break;
 					} else {
-						System.out.println("Too bad you don't know how to use a lock pick...");
+						System.out.println("You aren't too good with a lock pick are you...");
 					}
 				}else {
 					System.out.printf(

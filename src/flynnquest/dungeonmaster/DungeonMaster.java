@@ -52,8 +52,8 @@ public final class DungeonMaster {
 		int input;
 
 		do {
-			System.out.print(prompt);
 			try {
+				System.out.print(prompt);
 				input = Integer.parseInt(scanner.next());
 			} catch (Exception e) {
 				System.out.println("Please enter one of the available numbers!");
@@ -226,7 +226,7 @@ public final class DungeonMaster {
 	 */
 	public static void printMenu() {
 		clearConsole();
-		printHeading("Approaching " + scenes[scene]);
+		printHeading("INTERMISSION...Approaching " + scenes[scene]);
 		System.out.println("Choose an action:");
 		printSeparator(20);
 		if(player.getHpPotCount() < 0) {
@@ -258,8 +258,9 @@ public final class DungeonMaster {
 				else if(input == 3)
 					player.drinkHpPot();
 				else
+					System.out.println("Enjoy the real world!");
 					isRunning = false;
-				
+					Main.isRunning = false;
 			}else {
 				int input = readInt("-->", 3);
 				if(input == 1)
@@ -268,26 +269,15 @@ public final class DungeonMaster {
 					checkHeroStats();
 				else
 					isRunning = false;
+					Main.isRunning = false;
+					System.out.println("Enjoy the real world!");
 			}
 			
 		}
 	}
 	
 	public static int rollDice(int howManySides) {
-		int result =  random.nextInt(howManySides)+1;
-		System.out.println("The dungeon master is rolling the dice...");
-		System.out.println("     _,--\"^\"--._     \r\n"
-				+ "   ,'\\         /`.   \r\n"
-				+ " ,'   \\_______/   `. \r\n"
-				+ "|     /       \\     |\r\n"
-				+ "|    /         \\    |\r\n"
-				+ "|  _/     ??    \\_  |\r\n"
-				+ "\\'' `-.       ,-' ``/\r\n"
-				+ " \\     `-._,-'     / \r\n"
-				+ "  \\       |       /  \r\n"
-				+ "   `-.._  |  _,,-'   \r\n"
-				+ "        ``\"''        ");
-		return result;
+		return  random.nextInt(howManySides)+1;
 	}
 	
 	/**
