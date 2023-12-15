@@ -7,7 +7,6 @@ public class BlueRoom extends Scene {
 	private static int gold = DungeonMaster.rollDice(30);
 	private static boolean haveBarrelsBeenLooted = false;
 	private static boolean hasPlayerCrossedWater = false;
-	private static boolean hasSwimmingBeenTried = false;
 	private static int swimChallenge1 = 12;
 	private static int swimChallenge2 = 15;
 	private static int swim1Damage = 5;
@@ -39,7 +38,6 @@ public class BlueRoom extends Scene {
 			
 			switch(input) {
 			case 1:
-				hasSwimmingBeenTried = true;
 				System.out.println("You plunge into the water to find that it is ice cold...");
 				int strCheck1 = DungeonMaster.skillCheck(20, "strength", DungeonMaster.player.getStr());
 				if(strCheck1 >= swimChallenge1) {
