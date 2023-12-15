@@ -113,7 +113,6 @@ public final class DungeonMaster {
 		String name;
 		String vocation = null;
 		isRunning = true;
-//		Main.isRunning = true;
 		// print title screen
 		clearConsole();
 		printSeparator(120);
