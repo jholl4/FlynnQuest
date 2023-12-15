@@ -14,7 +14,7 @@ public abstract class Character {
 		private int dex; // dexterity
 		
 	public Character() {
-		this.name = "Unknown";
+		this.name = "Unknown Hero";
 		this.hp = maxHp;
 		this.isAlive = true;
 	}

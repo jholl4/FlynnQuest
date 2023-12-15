@@ -36,7 +36,9 @@ public class GameEnd extends Scene{
 					+ " ##::: ##: ##:::: ##: ##:. ###: ##::: ##:: ##::. ##:: ##.... ##:::: ##:::: ##:::: ##: ##::::::: ##.... ##:::: ##::::: ##:: ##:::: ##: ##:. ###:'##::: ##:'####:\r\n"
 					+ ". ######::. #######:: ##::. ##:. ######::: ##:::. ##: ##:::: ##:::: ##::::. #######:: ########: ##:::: ##:::: ##::::'####:. #######:: ##::. ##:. ######:: ####:\r\n"
 					+ ":......::::.......:::..::::..:::......::::..:::::..::..:::::..:::::..::::::.......:::........::..:::::..:::::..:::::....:::.......:::..::::..:::......:::....::");
-			System.out.printf("You did it! You were able to escape from the dungeon! You have %d Hp left, and you were able to amass a fortune of %d gold along the way!%n", DungeonMaster.player.getHp(), DungeonMaster.player.getGold());
+			System.out.printf(
+					"You did it! You were able to escape from the dungeon! You have %d Hp left,%n"
+					+ "and you were able to amass a fortune of %d gold along the way!%n", DungeonMaster.player.getHp(), DungeonMaster.player.getGold());
 			}
 		System.out.println();
 		System.out.printf("Your total score based on your health and everything you looted is %d%n", playerScore);

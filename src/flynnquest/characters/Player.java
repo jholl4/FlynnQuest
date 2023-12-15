@@ -17,7 +17,7 @@ public class Player extends Character {
 	private int gold;
 
 	public Player() {
-		super("Unknown Hero", 100);
+		super("Unknown Hero", 20);
 	}
 
 	public Player(String name, String vocation) {
@@ -36,7 +36,7 @@ public class Player extends Character {
 			setDex(8);
 			setMag(3);
 		}
-		if (vocation.equalsIgnoreCase("wizard")) {
+		if (vocation.equalsIgnoreCase("mage")) {
 			setStr(3);
 			setDex(5);
 			setMag(8);
