@@ -2,7 +2,7 @@ Flynn Quest is a short, classic text-based adventure dungeon-crawl game that is 
 
 This game is a project that I developed as an assignment during an immersive Java training program with SkillStorm.
 
-It's also named after my son, Flynn, that helped me with designing the dungeon layout and scenarios.
+It's also named after my son, Flynn, who helped me with designing the dungeon layout and scenarios.
 
 If you would like to give it a try, you can find the latest release version on the right side of the project's GitHub page.
 
